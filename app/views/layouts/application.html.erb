@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AppName</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-expand-md navbar-fixed-top">
+      <div class="nav-container nav">
+        <ul class="nav navbar-nav navbar-left">
+          <li><%= link_to "BiMMy",root_path %></li>
+        </ul>
+
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="site-menu">
+          <ul class="nav navbar-nav navbar-right">
+
+            <li>
+              <%= link_to "新規登録",new_user_path %>
+            </li>
+
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>" role="alert"><%= value %></div>
+    <% end %>
+
+    <%= yield %>
+
+    <script>
+      $(function () {
+        $(".alert").fadeOut(3000);
+      });
+    </script>
+
+  </body>
+
+  <footer id="footer" class="bg-light flex-column justify-content-center">
+    <p>© 2019 DAICHI HOSHINA All Rights Reserved.</p>
+  </footer>
+
+</html>

@@ -1,0 +1,67 @@
+.alert {
+  margin-bottom: 0px;
+  position: fixed;
+  width: 100%;
+  z-index: 10000;
+}
+
+body {
+  letter-spacing: -0.04em;
+  background-color: #fafafa;
+  color: #000000;
+  height: 100vh;
+  width: 100vw;
+}
+
+.top-wrapper {
+  width: 100vw;
+  height: 100vh;
+  color: #fafafa;;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: image-url("bimmy.jpeg");
+
+  .top-container {
+    padding-top: 300px;
+
+    .top-logo p {
+      font-size: 20px;
+    }
+
+    .top-login {
+      .btn {
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+.navbar {
+  margin-bottom: 0px;
+  margin-right: 10px;
+  width: 100vw;
+  .nav a {
+    color: #000000!important;
+    font-size: 20px;
+    text-decoration: none;
+  }
+  .navbar-collapse {
+    margin-right: 40px;
+  }
+}
+
+.users-new-wrapper{
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+footer {
+  padding-top: 20px;
+  color: #fff;
+  text-align: center;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #C0C0C0;
+}
