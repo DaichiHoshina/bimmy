@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>AppName</title>
+    <title>BiMMy</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -27,8 +27,26 @@
         <div class="collapse navbar-collapse" id="site-menu">
           <ul class="nav navbar-nav navbar-right">
 
+          <% if current_user %>
             <li>
-              <%= link_to "新規登録",new_user_path %>
+              <%= link_to "ログイン中:#{current_user.name}",user_path(current_user.id) %>
+            </li>
+            <li>
+              <%= link_to "投稿する","#" %>
+            </li>
+            <li>
+              <%= link_to "いいね一覧", "#"%>
+            </li>
+          <% end %>
+
+            <li>
+              <%= link_to "投稿一覧","#" %>
+            </li>
+            <li>
+              <%= link_to "登録者一覧","#" %>
+            </li>
+            <li>
+              <%= link_to "ログアウト",logout_path ,{method:"post"} %>
             </li>
 
           </ul>
@@ -44,7 +62,7 @@
 
     <script>
       $(function () {
-        $(".alert").fadeOut(3000);
+        $(".alert").fadeOut(4000);
       });
     </script>
 

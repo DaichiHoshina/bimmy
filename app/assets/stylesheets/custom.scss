@@ -1,5 +1,5 @@
 .alert {
-  margin-bottom: 0px;
+  margin-bottom: 0;
   position: fixed;
   width: 100%;
   z-index: 10000;
@@ -16,7 +16,7 @@ body {
 .top-wrapper {
   width: 100vw;
   height: 100vh;
-  color: #fafafa;;
+  color: #fafafa;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -37,23 +37,29 @@ body {
   }
 }
 
+.form-control {
+  height: 45px;
+}
+
 .navbar {
-  margin-bottom: 0px;
+  margin-bottom: 0;
   margin-right: 10px;
   width: 100vw;
+
   .nav a {
     color: #000000!important;
     font-size: 20px;
     text-decoration: none;
   }
+
   .navbar-collapse {
     margin-right: 40px;
   }
 }
 
-.users-new-wrapper{
-    padding-top: 50px;
-    padding-bottom: 50px;
+.users-new-wrapper {
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 footer {
