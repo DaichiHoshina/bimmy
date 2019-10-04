@@ -18,9 +18,6 @@ jobs:
           name: "before_test: setup db"
           command: docker-compose run web rails db:create db:migrate
       - run:
-          name: test
-          command: rspec
-      - run:
           name: docker-compose down
           command: docker-compose down
   deploy:
