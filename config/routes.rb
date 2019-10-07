@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root 'home#top'
 
   resources :users, only: %i[index new create show edit update]
+  resources :posts, only: %i[index new create show edit update]
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
