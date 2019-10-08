@@ -1,0 +1,13 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-4 col-md-4 user-contents-container text-center">
+        <h2><%= @user.name %></h2>
+        <p class="introduction"><%= @user.introduction %></p>
+        <% if current_user.id == @user.id %>
+          <%= link_to "編集", edit_user_path %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

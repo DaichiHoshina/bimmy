@@ -1,2 +1,17 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<div class="wrapper">
+  <div class="posts-container">
+    <div class="row">
+      <% @posts.each do |post| %>
+        <div class="col-md-offset-3 col-md-6 posts-list-container text-left">
+          <div class="posts-list-card">
+            <p><%= link_to "#{post.user.name}","#" %></p>
+            <h3><%= post.description %></h3>
+            <p class="tweet-info">
+              <%= post.user.created_at %>
+            </p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

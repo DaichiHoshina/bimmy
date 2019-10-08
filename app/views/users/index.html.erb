@@ -1,0 +1,14 @@
+<div class="wrapper">
+  <div class="users-container">
+    <div class="row">
+      <% @users.each do |user| %>
+        <div class="col-md-offset-3 col-md-6 users-list-container text-left">
+          <div class="users-list-card">
+            <p><%= link_to "#{user.name}","#" %></p>
+            <h3><%= user.introduction %></h3>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

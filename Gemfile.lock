@@ -246,10 +246,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bcrypt (~> 3.1.7)
+  bcrypt
   bootsnap (>= 1.1.0)
   bootstrap-sass
-  byebug
   capybara (>= 2.15)
   chromedriver-helper
   coffee-rails (~> 4.2)

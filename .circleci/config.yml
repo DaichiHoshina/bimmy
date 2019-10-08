@@ -16,7 +16,7 @@ jobs:
           command: sleep 1
       - run:
           name: "before_test: setup db"
-          command: docker-compose run web rails db:create db:migrate
+          command: docker-compose run web rails db:create db:migrate RAILS_ENV=test
       - run:
           name: test
           command: docker-compose exec web rails spec
