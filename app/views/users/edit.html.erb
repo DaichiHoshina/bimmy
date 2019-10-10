@@ -12,6 +12,10 @@
             <%= f.text_area :introduction, class: "form-control" %>
           </div>
           <div class="form-group">
+            <%= f.label :"画像" %>
+            <%= f.file_field :image %>
+          </div>
+          <div class="form-group">
             <%= f.submit '変更', class: "btn btn-block btn-primary" %>
           </div>
         <% end %>

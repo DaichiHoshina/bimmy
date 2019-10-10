@@ -4,6 +4,9 @@
       <div class="col-md-offset-4 col-md-4 user-contents-container text-center">
         <h2><%= @user.name %></h2>
         <p class="introduction"><%= @user.introduction %></p>
+        <div class="user-image">
+          <%= image_tag @user.image.to_s %>
+        </div>
         <% if current_user.id == @user.id %>
           <%= link_to "編集", edit_user_path %>
         <% end %>
