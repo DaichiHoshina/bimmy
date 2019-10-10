@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'like/index'
   get 'sessions/new'
 
   root 'home#top'

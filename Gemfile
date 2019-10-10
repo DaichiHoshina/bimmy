@@ -28,6 +28,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt'
+gem 'carrierwave'
+gem 'fog'
 gem 'jquery-rails'
 
 # Use ActiveStorage variant
@@ -43,6 +45,7 @@ gem 'rspec-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'dotenv-rails'
   gem 'pry-byebug'
   gem 'pry-doc'
   gem 'pry-rails'
