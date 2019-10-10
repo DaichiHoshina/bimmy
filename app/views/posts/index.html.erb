@@ -9,6 +9,9 @@
             <p class="tweet-info">
               <%= post.user.created_at %>
             </p>
+            <div class="form-group">
+              <%= image_tag post.image.to_s %>
+            </div>
           </div>
         </div>
       <% end %>
