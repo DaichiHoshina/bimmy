@@ -1,2 +1,30 @@
-<h1>Likes#index</h1>
-<p>Find me in app/views/likes/index.html.erb</p>
+<div class="wrapper">
+  <div class="posts-container">
+    <div class="row">
+      <% @like_posts .each do |post| %>
+        <div class="col-md-offset-4 col-md-4 post-list-container text-left mt-4">
+          <div class="post-list-card">
+            <div class="post-user-image">
+              <%= image_tag post.user.image.to_s %>
+            </div>
+            <div class="post-user-name">
+              <p><%= link_to "@"+"#{post.user.name}",user_path(post.user.id) %></p>
+            </div>
+            <p class="post-info">
+              <%= post.user.created_at.strftime("%Y-%m-%d %H:%M") %>
+            </p>
+            <p class="post-title">
+              <%= post.title %>
+            </p>
+            <p class="post-body">
+              <%= post.description %>
+            </p>
+            <div class="post-img">
+              <%= image_tag post.image.to_s %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

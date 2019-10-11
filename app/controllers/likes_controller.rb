@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class LikesController < ApplicationController
-  def index; end
+  def index
+    @like_posts = current_user.like_posts.order(created_at: :desc)
+  end
 
   def create
     like = Like.new
