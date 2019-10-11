@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
   resources :favorites, only: %i[index]
 
+
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   post '/logout', to: 'sessions#destroy'

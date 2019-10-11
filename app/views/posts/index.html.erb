@@ -2,22 +2,40 @@
   <div class="posts-container">
     <div class="row">
       <% @posts.each do |post| %>
-        <div class="col-md-offset-3 col-md-6 post-list-container text-left">
-          <div class="posts-list-card">
-            <div class="user-image">
+        <div class="col-md-offset-4 col-md-4 post-list-container text-left mt-4">
+          <div class="post-list-card">
+            <div class="post-user-image">
               <%= image_tag post.user.image.to_s %>
             </div>
-            <p><%= link_to "#{post.user.name}","#" %></p>
-            <h3><%= post.description %></h3>
-            <p class="tweet-info">
-              <%= post.user.created_at %>
+            <div class="post-user-name">
+              <p><%= link_to "@"+"#{post.user.name}",user_path(post.user.id) %></p>
+            </div>
+            <p class="post-info">
+              <%= post.user.created_at.strftime("%Y-%m-%d %H:%M") %>
             </p>
-            <div class="form-group">
+            <p class="post-title">
+              <%= post.title %>
+            </p>
+            <p class="post-body">
+              <%= post.description %>
+            </p>
+            <div class="post-img">
               <%= image_tag post.image.to_s %>
             </div>
-          </div>
-        </div>
-      <% end %>
+            <% if !post.like_users.include?(current_user) %>
+              <%= link_to post_like_path(post_id: post.id),method: :post do %>
+              <span class="fa fa-heart like-btn"></span>
+              <%= post.like_users.length %>
+              <% end %>
+            <% else %>
+              <%= link_to post_like_path(post_id: post.id),method: :delete do %>
+              <span class="fa fa-heart like-btn-unlike"></span>
+              <%= post.like_users.length %>
+            <% end %>
+        <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
+</div>
+</div>
 </div>

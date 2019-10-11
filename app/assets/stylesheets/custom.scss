@@ -66,30 +66,85 @@ body {
   margin-top: 100px;
 }
 
-.post-list-container {
+.user-contents-container {
   background-color: #fff;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  margin-top: 30px;
-  border: 1px solid #e6ecf0;
-  border-radius: 3px;
-  display: flex;
+  padding-bottom: 40px;
+  padding-top: 40px;
 
-  img {
-    width: 100%;
-    border-radius: 2%;
+  .introduction {
+    font-size: 15px;
   }
 
   .user-image {
-    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
 
     img {
-      width: 100px;
-      height: 100px;
-      border-radius: 40%;
-      box-shadow: 0 2px 6px #c1ced7;
-      margin-right: 20px;
+      width: 150px;
+      height: 150px;
+      border-radius: 15%;
+      box-shadow: 0 0 8px gray;
     }
+  }
+}
+
+.post-user-image {
+  display: flex;
+
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+  }
+}
+
+.post-list-container {
+  padding: 30px;
+  background-color: #FFFFFF;
+  border: 1px solid #e6ecf0;
+  border-radius: 3px;
+  margin-bottom: 10px;
+
+  .post-user-name {
+    font-size: 5px;
+    display: flex;
+  }
+
+  .post-info {
+    font-size: 3px;
+    color: #999999;
+  }
+
+  .post-title {
+    font-size: 5px;
+    font-weight: bold;
+  }
+
+  .post-body {
+    font-size: 15px;
+  }
+
+  .post-img {
+    img {
+      margin-top: 10px;
+      width: 100%;
+      border-radius: 1%;
+    }
+  }
+}
+
+.users-list-container {
+  padding-bottom: 15px;
+
+  p {
+    font-size: 15px;
+  }
+
+  img {
+    width: 80px;
+    height: 80px;
+    border-radius: 10%;
+    box-shadow: 0 0 8px gray;
   }
 }
 
