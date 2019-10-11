@@ -16,11 +16,11 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    favorite = Favorite.find_by(topic_id: params[:topic_id], user_id: current_user)
-    if favorite.destroy
-      redirect_to topics_path, success: 'お気に入りを解除しました'
+    like = Like.find_by(post_id: params[:post_id], user_id: current_user)
+    if like.destroy
+      redirect_to posts_path, success: 'いいねを解除しました'
     else
-      redirect_to topics_path, danger: 'お気に入りの解除に失敗しました'
+      redirect_to posts_path, danger: 'いいねの解除に失敗しました'
     end
   end
 end
