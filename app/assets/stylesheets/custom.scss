@@ -66,6 +66,23 @@ body {
     margin-top: 100px;
 }
 
+.posts-list-container {
+  background-color: #fff;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-top: 30px;
+  border: 1px solid #e6ecf0;
+  border-radius: 3px;
+  display: flex;
+  img {
+    width: 100%;
+    border-radius: 2%;
+  }
+  .user-image {
+    display: flex;
+  }
+}
+
 footer {
   padding-top: 20px;
   color: #C0C0C0;

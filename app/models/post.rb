@@ -6,6 +6,8 @@ class Post < ApplicationRecord
   # validates :image, presence: true
 
   belongs_to :user
+  has_many :favorites
+  has_many :favorite_posts, through: :favorites, source: 'post'
 
   mount_uploader :image, ImageUploader
 end
