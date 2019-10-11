@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'likes/index'
   get 'like/index'
   get 'sessions/new'
 
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :users, only: %i[index new create show edit update]
   resources :posts, only: %i[index new create show edit update]
+  resources :likes, only: %i[index create delete]
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

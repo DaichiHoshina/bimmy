@@ -22,9 +22,20 @@
             <div class="post-img">
               <%= image_tag post.image.to_s %>
             </div>
-          </div>
-        </div>
-      <% end %>
+            <% if !post.like_users.include?(current_user) %>
+              <%= link_to post_like_path(post_id: post.id),method: :post do %>
+              <span class="fa fa-heart like-btn"></span>
+              <%= post.like_users.length %>
+              <% end %>
+            <% else %>
+              <%= link_to post_like_path(post_id: post.id),method: :delete do %>
+              <span class="fa fa-heart like-btn-unlike"></span>
+              <%= post.like_users.length %>
+            <% end %>
+        <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
+</div>
+</div>
 </div>
