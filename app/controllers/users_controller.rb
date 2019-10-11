@@ -22,6 +22,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @users_post = Post.find_by(user_id: params[:id])
   end
 
   def edit

@@ -50,6 +50,7 @@ group :development, :test do
   gem 'pry-doc'
   gem 'pry-rails'
   gem 'pry-stack_explorer'
+  gem 'rubocop'
 end
 
 group :development do
