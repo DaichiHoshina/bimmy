@@ -22,18 +22,21 @@
             <div class="post-img">
               <%= image_tag post.image.to_s %>
             </div>
-
-
+            <% if !post.like_users.include?(current_user) %>
+              <div class="like">
               <%= link_to post_like_path(post_id: post.id),method: :post do %>
               <span class="fa fa-heart like-btn"></span>
-a
+              <%= post.like_users.length %>
               <% end %>
-
+              </div>
+            <% else %>
+              <div class="unlike">
               <%= link_to post_like_path(post_id: post.id),method: :delete do %>
               <span class="fa fa-heart like-btn-unlike"></span>
-
+              <%= post.like_users.length %>
               <% end %>
-
+              </div>
+            <% end %>
           </div>
         </div>
       <% end %>

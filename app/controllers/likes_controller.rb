@@ -17,6 +17,7 @@ class LikesController < ApplicationController
 
   def destroy
     like = Like.find_by(post_id: params[:post_id], user_id: current_user)
+
     if like.destroy
       redirect_to posts_path, success: 'いいねを解除しました'
     else
