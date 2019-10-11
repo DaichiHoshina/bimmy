@@ -16,6 +16,8 @@ class User < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
+  has_many :favorites
+  has_many :favorite_posts, through: :favorites, source: 'post'
   has_many :posts
   has_many :likes
   has_many :like_posts, through: :likes, source: 'post'
