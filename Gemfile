@@ -31,6 +31,8 @@ gem 'bcrypt'
 gem 'carrierwave'
 gem 'fog'
 gem 'jquery-rails'
+gem 'kaminari'
+gem 'kaminari-bootstrap', '~> 3.0.1'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

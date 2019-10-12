@@ -14,11 +14,13 @@
     </div>
   </div>
 </div>
-<h1><%= @user.name %>さんの投稿</h1>
+<div class="col-md-offset-4 col-md-4">
+  <h2>[<%= @user.name %>さんの投稿]</h2>
+</div>
 <div class="wrapper">
   <div class="posts-container">
     <div class="row">
-      <% @users_post .each do |post| %>
+      <% @posts .each do |post| %>
         <div class="col-md-offset-4 col-md-4 post-list-container text-left mt-4">
           <div class="post-list-card">
             <div class="post-user-image">
