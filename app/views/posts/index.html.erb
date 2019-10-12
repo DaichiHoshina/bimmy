@@ -22,6 +22,7 @@
             <div class="post-img">
               <%= image_tag post.image.to_s %>
             </div>
+            <% if current_user %>
             <% if !post.like_users.include?(current_user) %>
               <div class="like">
               <%= link_to post_like_path(post_id: post.id),method: :post do %>
@@ -36,6 +37,7 @@
               <%= post.like_users.length %>
               <% end %>
               </div>
+            <% end %>
             <% end %>
           </div>
         </div>

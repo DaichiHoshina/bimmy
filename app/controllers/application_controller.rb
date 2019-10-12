@@ -14,4 +14,12 @@ class ApplicationController < ActionController::Base
   def logged_in?
     !current_user.nil?
   end
+
+  def authenticate_user
+    redirect_to login_path, danger: 'ログインしてください' if current_user.nil?
+  end
+
+  def ensure_correct_user
+    redirect_to login_path, danger: '権限がありません' if params[:id].to_i != current_user.id
+  end
 end
