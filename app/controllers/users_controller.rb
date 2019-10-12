@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+PER = 5
+
 class UsersController < ApplicationController
   def index
     @users = User.all
@@ -23,6 +25,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = Post.where(user_id: params[:id])
+    @user_posts = @posts.page(params[:page]).per(PER).order(created_at: :desc)
   end
 
   def edit

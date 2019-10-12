@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
+PER = 5
+
 class LikesController < ApplicationController
   def index
-    @like_posts = current_user.like_posts.order(created_at: :desc)
+    @posts = current_user.like_posts.order(created_at: :desc)
+    @like_posts = @posts.page(params[:page]).per(PER).order(created_at: :desc)
   end
 
   def create

@@ -20,7 +20,7 @@
 <div class="wrapper">
   <div class="posts-container">
     <div class="row">
-      <% @posts .each do |post| %>
+      <% @user_posts .each do |post| %>
         <div class="col-md-offset-4 col-md-4 post-list-container text-left mt-4">
           <div class="post-list-card">
             <div class="post-user-image">
@@ -44,6 +44,9 @@
           </div>
         </div>
       <% end %>
+    </div>
+    <div class="paginate text-center">
+      <%= paginate @user_posts %>
     </div>
   </div>
 </div>
