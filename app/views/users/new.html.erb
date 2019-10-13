@@ -5,19 +5,19 @@
         <h1 class="text-center text-white">新規登録</h1>
         <%= form_for @user do |f| %>
           <div class="form-group">
-            <%= f.label :"名前" %>
+            <%= f.label :"名前 ※必須  15文字以内" %>
             <%= f.text_field :name, class: "form-control" %>
           </div>
           <div class="form-group">
-            <%= f.label :"メールアドレス" %>
+            <%= f.label :"メールアドレス ※必須" %>
             <%= f.text_field :email, class: "form-control" %>
           </div>
           <div class="form-group">
-            <%= f.label :"プロフィール画像" %>
+            <%= f.label :"プロフィール画像  ※任意" %>
             <%= f.file_field :image %>
           </div>
           <div class="form-group">
-            <%= f.label :"パスワード" %>
+            <%= f.label :"パスワード ※必須  8~32文字で英数字" %>
             <%= f.password_field :password, class: "form-control" %>
           </div>
           <%= f.submit "登録",class: "btn btn-block btn-primary" %>
