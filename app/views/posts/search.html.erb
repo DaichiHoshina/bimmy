@@ -1,26 +1,16 @@
 <div class="wrapper">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-offset-4 col-md-4 user-contents-container text-center">
-        <h2><%= @user.name %></h2>
-        <p class="introduction"><%= @user.introduction %></p>
-        <div class="user-image">
-          <%= image_tag @user.image.to_s %>
-        </div>
-        <% if current_user.id == @user.id %>
-          <%= link_to "編集", edit_user_path %>
-        <% end %>
-      </div>
-    </div>
+  <div class="posts-container">
+    <p>検索</p>
+    <%= form_tag(posts_search_path, :method => 'get') do %>
+    <%= text_field_tag :search %>
+    <%= submit_tag 'Search', :name => nil %>
+  <% end %>
   </div>
-</div>
-<div class="col-md-offset-4 col-md-4">
-  <h2>[<%= @user.name %>さんの投稿]</h2>
 </div>
 <div class="wrapper">
   <div class="posts-container">
     <div class="row">
-      <% @user_posts .each do |post| %>
+      <% @posts_search.each do |post| %>
         <div class="col-md-offset-4 col-md-4 post-list-container text-left mt-4">
           <div class="post-list-card">
             <div class="post-user-image">
@@ -33,27 +23,40 @@
               <%= post.user.created_at.strftime("%Y-%m-%d %H:%M") %>
             </p>
             <p class="post-title">
-              <%= post.title %>
+              [品名] <%= post.title %>
             </p>
             <p class="post-title">
             [県名] <%= post.prefecture.name if post.prefecture_id? %>
             </p>
             <p class="post-body">
-              <%= post.description %>
+              [感想] <%= post.description %>
             </p>
             <div class="post-img">
               <%= image_tag post.image.to_s %>
             </div>
             <% if current_user %>
-            <%= link_to "投稿を削除", post_path(post.id) ,method: :delete,
-            data: {confirm: '本当に削除してもよろしいですか？'} %>
+            <% if !post.like_users.include?(current_user) %>
+              <div class="like">
+              <%= link_to post_like_path(post_id: post.id),method: :post do %>
+              <span class="fa fa-heart like-btn"></span>
+              <%= post.like_users.length %>
+              <% end %>
+              </div>
+            <% else %>
+              <div class="unlike">
+              <%= link_to post_like_path(post_id: post.id),method: :delete do %>
+              <span class="fa fa-heart like-btn-unlike"></span>
+              <%= post.like_users.length %>
+              <% end %>
+              </div>
+            <% end %>
             <% end %>
           </div>
         </div>
       <% end %>
     </div>
     <div class="paginate text-center">
-      <%= paginate @user_posts %>
+      <%= paginate @posts_search %>
     </div>
   </div>
 </div>

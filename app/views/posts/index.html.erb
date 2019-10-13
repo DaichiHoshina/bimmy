@@ -1,53 +1,63 @@
 <div class="wrapper">
   <div class="posts-container">
+    <div class="search text-center">
+      <h3>検索</h3>
+      <%= form_tag(posts_path, :method => 'get' ) do %>
+      <%= text_field_tag :search %>
+      <%= submit_tag '検索', :title => nil %>
+      <% end %>
+    </div>
     <div class="row">
-      <% @posts.each do |post| %>
-        <div class="col-md-offset-4 col-md-4 post-list-container text-left mt-4">
-          <div class="post-list-card">
-            <div class="post-user-image">
-              <%= image_tag post.user.image.to_s %>
-            </div>
-            <div class="post-user-name">
-              <p><%= link_to "@"+"#{post.user.name}",user_path(post.user.id) %></p>
-            </div>
-            <p class="post-info">
-              <%= post.user.created_at.strftime("%Y-%m-%d %H:%M") %>
-            </p>
-            <p class="post-title">
-              [品名] <%= post.title %>
-            </p>
-            <p class="post-body">
-              [感想] <%= post.description %>
-            </p>
-            <div class="post-img">
-              <%= image_tag post.image.to_s %>
-            </div>
-            <p class="post-title">
-            [県名] <%= post.prefecture.name if post.prefecture_id? %>
-            </p>
-            <% if current_user %>
+    <% @posts.each do |post| %>
+      <div class="col-md-offset-4 col-md-4 post-list-container text-left mt-4">
+        <div class="post-list-card">
+          <div class="post-user-image">
+            <%= image_tag post.user.image.to_s %>
+          </div>
+          <div class="post-user-name">
+            <p><%= link_to "@"+"#{post.user.name}",user_path(post.user.id) %></p>
+          </div>
+          <p class="post-info">
+            <%= post.user.created_at.strftime("%Y-%m-%d %H:%M") %>
+          </p>
+          <p class="post-title">
+            [品名]
+            <%= post.title %>
+          </p>
+          <p class="post-title">
+            [県名]
+            <%= post.prefecture.name if post.prefecture_id? %>
+          </p>
+          <p class="post-body">
+            [感想]
+            <%= post.description %>
+          </p>
+          <div class="post-img">
+            <%= image_tag post.image.to_s %>
+          </div>
+          <% if current_user %>
             <% if !post.like_users.include?(current_user) %>
               <div class="like">
-              <%= link_to post_like_path(post_id: post.id),method: :post do %>
-              <span class="fa fa-heart like-btn"></span>
-              <%= post.like_users.length %>
+                <%= link_to post_like_path(post_id: post.id),method: :post do %>
+                <span class="fa fa-heart like-btn"></span>
+                <%= post.like_users.length %>
               <% end %>
-              </div>
-            <% else %>
-              <div class="unlike">
+            </div>
+          <% else %>
+            <div class="unlike">
               <%= link_to post_like_path(post_id: post.id),method: :delete do %>
               <span class="fa fa-heart like-btn-unlike"></span>
               <%= post.like_users.length %>
-              <% end %>
-              </div>
-            <% end %>
             <% end %>
           </div>
-        </div>
+        <% end %>
       <% end %>
     </div>
-    <div class="paginate text-center">
-      <%= paginate @posts %>
-    </div>
   </div>
+<% end %>
+</div>
+<div class="paginate text-center">
+<%= paginate @posts %>
+</div>
+</div>
 </div>

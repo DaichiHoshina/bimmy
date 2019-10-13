@@ -16,6 +16,9 @@
             <p class="post-title">
               <%= post.title %>
             </p>
+            <p class="post-title">
+            [県名] <%= post.prefecture.name if post.prefecture_id? %>
+            </p>
             <p class="post-body">
               <%= post.description %>
             </p>

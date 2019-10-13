@@ -5,7 +5,7 @@ PER = 5
 
 class PostsController < ApplicationController
   def index
-    @posts = Post.page(params[:page]).per(PER).order(created_at: :desc)
+    @posts = Post.page(params[:page]).per(PER).order(created_at: :desc).search(params[:search])
   end
 
   def new
@@ -35,6 +35,12 @@ class PostsController < ApplicationController
     else
       redirect_to user_path(current_user.id), danger: 'あなたに権限はありません'
     end
+  end
+
+  def search
+    # Viewのformで取得したパラメータをモデルに渡す
+    @posts = Post.search(params[:search])
+    @posts_search = @posts.page(params[:page]).per(PER).order(created_at: :desc)
   end
 
   private

@@ -5,6 +5,7 @@
         <h1 class="text-center text-white">新規投稿</h1>
         <h3></h3>
         <%= form_for @post do |f| %>
+        <%= render 'layouts/error_messages', model: f.object %>
           <div class="form-group">
             <%= f.label :"料理名" %>
             <%= f.text_field:title, class: "form-control" %>

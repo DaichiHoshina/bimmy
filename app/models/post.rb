@@ -13,4 +13,12 @@ class Post < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
+
+  def self.search(search)
+    if search
+      where(['title LIKE ?', "%#{search}%"]) # 検索とnameの部分一致を表示。User.は省略
+    else
+      all
+    end
+  end
 end

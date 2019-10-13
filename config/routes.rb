@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   end
   resources :likes, only: %i[index]
 
+  get 'posts/search', to: 'posts#search'
+
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   post '/logout', to: 'sessions#destroy'
