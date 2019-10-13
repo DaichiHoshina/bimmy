@@ -27,9 +27,11 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
+gem 'active_hash'
 gem 'bcrypt'
 gem 'carrierwave'
 gem 'fog'
+gem 'jp_prefecture'
 gem 'jquery-rails'
 gem 'kaminari'
 gem 'kaminari-bootstrap', '~> 3.0.1'

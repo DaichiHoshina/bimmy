@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# 投稿5個で次のページ
 PER = 5
 
 class PostsController < ApplicationController
@@ -25,6 +26,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :description, :image)
+    params.require(:post).permit(:title, :description, :image, :city, :prefecture_id)
   end
 end

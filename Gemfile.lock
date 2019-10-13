@@ -25,6 +25,8 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
+    active_hash (3.0.0)
+      activesupport (>= 5.0.0)
     activejob (5.2.2.1)
       activesupport (= 5.2.2.1)
       globalid (>= 0.3.6)
@@ -306,6 +308,7 @@ GEM
     jaro_winkler (1.5.3)
     jbuilder (2.9.1)
       activesupport (>= 4.2.0)
+    jp_prefecture (0.10.0)
     jquery-rails (4.3.5)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
@@ -524,6 +527,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_hash
   bcrypt
   bootsnap (>= 1.1.0)
   bootstrap-sass
@@ -536,6 +540,7 @@ DEPENDENCIES
   faker
   fog
   jbuilder (~> 2.5)
+  jp_prefecture
   jquery-rails
   kaminari
   kaminari-bootstrap (~> 3.0.1)

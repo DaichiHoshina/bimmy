@@ -14,6 +14,12 @@
           </div>
           <%= f.submit "ログイン",class: "btn btn-block btn-primary" %>
         <% end %>
+        <p>※ポートフォリオ閲覧用です</p>
+        <%= form_for :session, url: login_path do |f| %>
+          <%= f.hidden_field :email, {value: 'test@test.jp'} %>
+          <%= f.hidden_field :password, {value: 'test1234'} %>
+          <%= f.submit "テストユーザーとしてログイン", class: "btn btn-block btn-warning" %>
+        <% end %>
       </div>
     </div>
   </div>

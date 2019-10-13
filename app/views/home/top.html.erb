@@ -16,12 +16,12 @@
         </div>
         <div class="top-login col-md-offset-4 col-md-4 text-center">
           <%= form_for :session, url: login_path do |f| %>
-          <%= f.hidden_field :email, {value: 'test@test.jp'} %>
-          <%= f.hidden_field :password, {value: 'test1234'} %>
-          <%= f.submit "テストユーザーとしてログイン", class: "btn btn-warning" %>
-        <% end %>
-      </div>
-    <% end %>
+            <%= f.hidden_field :email, {value: 'test@test.jp'} %>
+            <%= f.hidden_field :password, {value: 'test1234'} %>
+            <%= f.submit "テストユーザーとしてログイン", class: "btn btn-warning" %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
-</div>
 </div>
