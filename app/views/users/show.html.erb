@@ -41,6 +41,9 @@
             <div class="post-img">
               <%= image_tag post.image.to_s %>
             </div>
+            <% if current_user %>
+            <%= link_to "投稿を削除", post_path(post.id) ,{method:"delete"} %>
+            <% end %>
           </div>
         </div>
       <% end %>

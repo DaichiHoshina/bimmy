@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'home#top'
 
   resources :users, only: %i[index new create show edit update]
-  resources :posts, only: %i[index new create] do
+  resources :posts, only: %i[index new create destroy] do
     resource :like, only: %i[create destroy]
   end
   resources :likes, only: %i[index]

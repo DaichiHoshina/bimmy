@@ -16,6 +16,7 @@
           <div class="form-group">
           <%= f.label :"県名" %>
           <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name %>
+          <%= f.collection_check_boxes :prefecture_id, Prefecture.all, :id, :name %>
           </div>
           <div class="form-group">
             <%= f.label :"画像" %>
