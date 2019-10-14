@@ -5,7 +5,16 @@ PER = 5
 
 class PostsController < ApplicationController
   def index
-    @posts = Post.page(params[:page]).per(PER).order(created_at: :desc).search(params[:search])
+    @posts = if params[:prefecture_id]
+               Post.where('prefecture_id IN(?)', params[:prefecture_id])
+             else
+               Post.page(params[:page]).per(PER).order(created_at: :desc)
+             end
+  end
+
+  def search
+    @posts = Post.where(prefecture_id: params[:prefecture_id])
+    @posts_search = @posts.page(params[:page]).per(PER).order(created_at: :desc).search(params[:search])
   end
 
   def new
@@ -24,6 +33,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    # 投稿者本人のみが削除可能
     @post = Post.find_by(id: params[:id])
     if @post.user_id == current_user.id
       if @post.destroy
@@ -35,12 +45,6 @@ class PostsController < ApplicationController
     else
       redirect_to user_path(current_user.id), danger: 'あなたに権限はありません'
     end
-  end
-
-  def search
-    # Viewのformで取得したパラメータをモデルに渡す
-    @posts = Post.search(params[:search])
-    @posts_search = @posts.page(params[:page]).per(PER).order(created_at: :desc)
   end
 
   private

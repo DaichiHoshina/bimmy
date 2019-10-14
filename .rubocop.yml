@@ -12,6 +12,9 @@ Metrics/LineLength:
 LineLength:
   Enabled: false
 
+MethodLength:
+  Enabled: false
+
 # 日本語でのコメントを許可
 AsciiComments:
   Enabled: false

@@ -4,7 +4,7 @@ PER = 5
 
 class UsersController < ApplicationController
   before_action :authenticate_user, only: %i[show edit update]
-  before_action :ensure_correct_user, only: %i[update edit show]
+  before_action :ensure_correct_user, only: %i[update edit]
 
   def index
     @users = User.all

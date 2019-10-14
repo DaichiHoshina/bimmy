@@ -1,12 +1,21 @@
 <div class="wrapper">
   <div class="posts-container">
     <div class="search text-center">
+
       <h3>検索</h3>
-      <%= form_tag(posts_path, :method => 'get' ) do %>
-      <%= text_field_tag :search %>
-      <%= submit_tag '検索', :title => nil %>
+      <%= form_with url:'/posts', method: :get, local: true do |f| %>
+        <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name %>
+        <%= f.label :title %>
+        <%= f.submit 'Search' %>
       <% end %>
     </div>
+
+    <%= form_for :post, url: posts_path do |f| %>
+    <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name %>
+    <%= f.label :title %>
+    <%= f.submit "地名検索" %>
+    <% end %>
+
     <div class="row">
     <% @posts.each do |post| %>
       <div class="col-md-offset-4 col-md-4 post-list-container text-left mt-4">
@@ -50,14 +59,16 @@
               <%= post.like_users.length %>
             <% end %>
           </div>
+          <% end %>
         <% end %>
-      <% end %>
+        </div>
+      </div>
+    <% end %>
+    </div>
+    <div class="paginate text-center">
+
+
+
     </div>
   </div>
-<% end %>
-</div>
-<div class="paginate text-center">
-<%= paginate @posts %>
-</div>
-</div>
 </div>

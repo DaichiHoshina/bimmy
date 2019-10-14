@@ -44,7 +44,7 @@
             <div class="post-img">
               <%= image_tag post.image.to_s %>
             </div>
-            <% if current_user %>
+            <% if current_user.id == post.user_id %>
             <%= link_to "投稿を削除", post_path(post.id) ,method: :delete,
             data: {confirm: '本当に削除してもよろしいですか？'} %>
             <% end %>
