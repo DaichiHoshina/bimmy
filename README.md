@@ -23,6 +23,10 @@ https://mysterious-sands-64106.herokuapp.com
 8.星評価機能  
 9.県名検索機能  
 
+#注目して欲しい点
+・dockerで開発環境を構築していること  
+・CircleCIで自動でのテストとデプロイを実装していること  
+
 ## 使用技術
 - 言語/フレームワーク
     - Ruby2.7 / Ruby on Rails 5.2
