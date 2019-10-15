@@ -26,7 +26,6 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
       - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
-      - run: yarn install
       - save_cache:
           paths:
             - ./vendor/bundle
@@ -38,10 +37,11 @@ jobs:
           name: Rspec
           command: bundle exec rspec
   deploy:
-    machine:
-      image: circleci/ruby:2.6.0-node-browsers-legacy
+    docker:
+      image: circleci/ruby:2.6.2-node-browsers-legacy
     steps:
       - checkout
+      - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
       - run:
           name: "build docker image"
           command: docker build --rm=false -t registry.heroku.com/${HEROKU_APP_NAME}/web .
