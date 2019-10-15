@@ -28,23 +28,6 @@
           <div class="post-user-name">
             <p><%= link_to "@"+"#{post.user.name}",user_path(post.user.id) %></p>
           </div>
-          <div class="star">
-            <h4>評価：<%= post.rate %>点</h4>
-            <!--星評価-->
-           <div id="star-rate-<%= post.id %>"></div>
-            <script>
-            $('#star-rate-<%= post.id %>').raty({
-              size: 36,
-              starOff:  '<%= asset_path('star-off.png') %>',
-              starOn : '<%= asset_path('star-on.png') %>',
-              starHalf: '<%= asset_path('star-half.png') %>',
-              half: true,
-              readOnly: true,
-              score: <%= post.rate %>,
-            });
-            </script>
-          <!--/星評価-->
-          </div>
           <p class="post-info">
             <%= post.user.created_at.strftime("%Y-%m-%d %H:%M") %>
           </p>
@@ -60,8 +43,22 @@
             [感想]
             <%= post.description %>
           </p>
+          <h4>評価：<%= post.rate %>点</h4>
 
-
+          <!--星評価-->
+          <div id="star-rate-<%= post.id %>"></div>
+          <script>
+          $('#star-rate-<%= post.id %>').raty({
+            size: 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= post.rate %>,
+          });
+          </script>
+          <!--/星評価-->
 
           <div class="post-img">
             <%= image_tag post.image.to_s %>
