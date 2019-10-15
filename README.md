@@ -23,7 +23,7 @@ https://mysterious-sands-64106.herokuapp.com
 8.星評価機能  
 9.県名検索機能  
 
-#注目して欲しい点
+## 注目して欲しい点
 ・dockerで開発環境を構築していること  
 ・CircleCIで自動でのテストとデプロイを実装していること  
 
