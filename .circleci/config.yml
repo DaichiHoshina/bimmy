@@ -31,8 +31,10 @@ jobs:
           paths:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
-      - run: rails db:create
-      - run: rails db:schema:load
+      - run:
+          name: Prepare db
+          command: |
+            bundle exec rake db:create db:schema:load --trace
       # Rspec
       - run:
           name: Rspec
