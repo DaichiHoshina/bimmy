@@ -24,3 +24,9 @@ Style/Documentation:
 
 Style/MixinUsage:
   Enabled: false
+
+Metrics/AbcSize:
+  Max: 20
+
+Metrics/BlockLength:
+  Enabled: false
