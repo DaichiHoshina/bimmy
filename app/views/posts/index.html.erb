@@ -1,20 +1,22 @@
 <div class="wrapper">
   <div class="posts-container">
-    <div class="search text-center">
 
-      <h3>検索</h3>
+    <!-- 県名検索機能 -->
+    <div class="search text-center">
       <%= form_with url:'/posts', method: :get, local: true do |f| %>
         <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name %>
-        <%= f.label :title %>
-        <%= f.submit 'Search' %>
+        <%= f.submit "県名で検索する" %>
       <% end %>
-    </div>
+      <% if params[:prefecture_id] != nil && @posts != nil %>
+        <h4>【<%= @name %>】の検索結果を表示中です</h4>
 
-    <%= form_for :post, url: posts_path do |f| %>
-    <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name %>
-    <%= f.label :title %>
-    <%= f.submit "地名検索" %>
-    <% end %>
+      <% elsif @posts == nil %>
+        <p>お探しの県は、1件も投稿がありません</p>
+      <% else %>
+        <p>県名で検索してください</p>
+      <% end %>
+      <p><% @count %>件</p>
+    </div>
 
     <div class="row">
     <% @posts.each do |post| %>

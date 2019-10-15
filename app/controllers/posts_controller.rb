@@ -5,16 +5,19 @@ PER = 5
 
 class PostsController < ApplicationController
   def index
+    # 県名検索機能
     @posts = if params[:prefecture_id]
+               # 検索した県名をviewへ渡す
+               @int = Post.new(prefecture_id: params[:prefecture_id])
+               @name = @int.prefecture.name
+               @post = Post.where('prefecture_id IN(?)', params[:prefecture_id])
+               @count = @post.count
+
                Post.where('prefecture_id IN(?)', params[:prefecture_id])
+
              else
                Post.page(params[:page]).per(PER).order(created_at: :desc)
              end
-  end
-
-  def search
-    @posts = Post.where(prefecture_id: params[:prefecture_id])
-    @posts_search = @posts.page(params[:page]).per(PER).order(created_at: :desc).search(params[:search])
   end
 
   def new
@@ -33,8 +36,8 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    # 投稿者本人のみが削除可能
     @post = Post.find_by(id: params[:id])
+    # 投稿者本人のみが削除可能
     if @post.user_id == current_user.id
       if @post.destroy
         redirect_to user_path(current_user.id), success: '投稿を削除しました'
