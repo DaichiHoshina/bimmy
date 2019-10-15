@@ -41,10 +41,11 @@ jobs:
       - image: circleci/ruby:2.6.2-node-browsers-legacy
     steps:
       - checkout
-      - setup_remote_docker 
+      - setup_remote_docker
       - run:
           name: "build docker image"
           command: |
+              docker login --username=_ --password=$HEROKU_AUTH_TOKEN registry.heroku.com
               docker pull registry.heroku.com/${HEROKU_APP_NAME}/web
               docker build --rm=false -t registry.heroku.com/${HEROKU_APP_NAME}/web .
       - run:
