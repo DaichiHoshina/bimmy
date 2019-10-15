@@ -2,14 +2,14 @@ version: 2.1
 jobs:
   checkout_code:
     docker:
-      - image: circleci/ruby:2.6.0-node-browsers-legacy
+      - image: circleci/ruby:2.6.2-node-browsers-legacy
     working_directory: ~/repo
     steps:
       - checkout
 
   rspec:
     docker:
-      - image: circleci/ruby:2.6.0-node-browsers-legacy
+      - image: circleci/ruby:2.6.2-node-browsers-legacy
         environment:
           RAILS_ENV: test
           POSTGRES_HOST: 127.0.0.1
@@ -39,7 +39,7 @@ jobs:
           command: bundle exec rspec
   deploy:
     machine:
-      image: circleci/ruby:2.6.0-node-browsers-legacy
+      image: circleci/ruby:2.6.2-node-browsers-legacy
     steps:
       - checkout
       - run:
