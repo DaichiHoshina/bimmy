@@ -41,6 +41,13 @@ jobs:
       - image: circleci/ruby:2.6.2-node-browsers-legacy
     steps:
       - checkout
+      - setup_remote_docker:   # (2)
+          docker_layer_caching: true # (3)
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
       - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
       - run:
           name: "build docker image"
