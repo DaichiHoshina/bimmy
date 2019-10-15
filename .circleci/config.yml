@@ -1,4 +1,4 @@
-version: 2.1
+version: 2
 jobs:
   checkout_code:
     docker:
@@ -7,10 +7,10 @@ jobs:
     steps:
       - checkout
 
-  rspec:
-     machine:
-      -image: circleci/ruby:2.6.2-node-browsers-legacy
-     steps:
+  build:
+    machine:
+      image: circleci/ruby:2.6.2-node-browsers-legacy
+    steps:
       - checkout
       - run:
           name: docker-compose build
@@ -64,7 +64,7 @@ workflows:
   test_and_deploy:
     jobs:
       - checkout_code
-      - rspec:
+      - build:
           requires:
             - checkout_code
       - deploy:
