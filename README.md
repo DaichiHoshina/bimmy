@@ -44,3 +44,7 @@ https://mysterious-sands-64106.herokuapp.com
     - Rubocop
 - テスト
     - Rspec
+
+## 今後の課題
+・herokuからAWSを使ったデプロイに切り替える
+・テストの数が少ないので充実させていく
