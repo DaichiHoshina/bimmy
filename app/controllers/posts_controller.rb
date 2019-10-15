@@ -13,7 +13,7 @@ class PostsController < ApplicationController
                @post = Post.where('prefecture_id IN(?)', params[:prefecture_id])
                @count = @post.count
 
-               Post.where('prefecture_id IN(?)', params[:prefecture_id])
+               Post.where('prefecture_id IN(?)', params[:prefecture_id]).order(created_at: :desc)
 
              else
                Post.page(params[:page]).per(PER).order(created_at: :desc)
@@ -53,6 +53,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :description, :image, :city, :prefecture_id)
+    params.require(:post).permit(:title, :description, :image, :city, :prefecture_id, :rate)
   end
 end
