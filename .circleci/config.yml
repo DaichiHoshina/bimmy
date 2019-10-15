@@ -60,7 +60,7 @@ jobs:
           name: heroku maintenance off
           command: heroku maintenance:off --app ${HEROKU_APP_NAME}
 workflows:
-  version: 2.1
+  version: 2
   test_and_deploy:
     jobs:
       - checkout_code
