@@ -30,11 +30,12 @@ gem 'jbuilder', '~> 2.5'
 gem 'active_hash'
 gem 'bcrypt'
 gem 'carrierwave'
-gem 'fog'
+gem 'fog-aws'
 gem 'jp_prefecture'
 gem 'jquery-rails'
 gem 'kaminari'
 gem 'kaminari-bootstrap', '~> 3.0.1'
+gem 'rmagick'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
