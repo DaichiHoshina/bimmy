@@ -9,13 +9,10 @@
       <% end %>
       <% if params[:prefecture_id] != nil && @posts != nil %>
         <h4>【<%= @name %>】の検索結果を表示中です</h4>
-
-      <% elsif @posts == nil %>
-        <p>お探しの県は、1件も投稿がありません</p>
+        <p>検索結果:<%= @posts_count %>件</p>
       <% else %>
         <p>県名で検索してください</p>
       <% end %>
-      <p><% @count %>件</p>
     </div>
 
     <div class="row">
@@ -85,9 +82,7 @@
     <% end %>
     </div>
     <div class="paginate text-center">
-
-
-
+      <%= paginate @posts %>
     </div>
   </div>
 </div>

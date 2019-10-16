@@ -26,7 +26,7 @@ Style/MixinUsage:
   Enabled: false
 
 Metrics/AbcSize:
-  Max: 20
+  Max: 30
 
 Metrics/BlockLength:
   Enabled: false

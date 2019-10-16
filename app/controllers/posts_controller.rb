@@ -6,18 +6,19 @@ PER = 5
 class PostsController < ApplicationController
   def index
     # 県名検索機能
-    @posts = if params[:prefecture_id]
-               # 検索した県名をviewへ渡す
-               @int = Post.new(prefecture_id: params[:prefecture_id])
-               @name = @int.prefecture.name
-               @post = Post.where('prefecture_id IN(?)', params[:prefecture_id])
-               @count = @post.count
+    if params[:prefecture_id]
+      # 検索した県名をviewへ渡す
+      @int = Post.new(prefecture_id: params[:prefecture_id])
+      @name = @int.prefecture.name
+      @post = Post.where('prefecture_id IN(?)', params[:prefecture_id])
+      @count = @post.count
+      @posts_search = Post.where('prefecture_id IN(?)', params[:prefecture_id]).order(created_at: :desc)
+      @posts = @posts_search.page(params[:page]).per(PER).order(created_at: :desc)
+      @posts_count = @posts_search.length
 
-               Post.where('prefecture_id IN(?)', params[:prefecture_id]).order(created_at: :desc)
-
-             else
-               Post.page(params[:page]).per(PER).order(created_at: :desc)
-             end
+    else
+      @posts = Post.page(params[:page]).per(PER).order(created_at: :desc)
+    end
   end
 
   def new
@@ -32,6 +33,19 @@ class PostsController < ApplicationController
     else
       flash.now[:danger] = '投稿に失敗しました'
       render :new
+    end
+  end
+
+  def update
+    @post = Post.find_by(params: id)
+    @post.name = post_params[:name]
+    @post.introduction = user_params[:introduction]
+    @post.image = user_params[:image]
+    if @user.save
+      redirect_to user_path, success: '変更が完了しました'
+    else
+      flash.now[:danger] = '変更に失敗しました'
+      render :edit
     end
   end
 
