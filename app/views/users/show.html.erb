@@ -41,12 +41,29 @@
             <p class="post-body">
               <%= post.description %>
             </p>
+            <h4>評価：<%= post.rate %>点</h4>
+
+            <!--星評価-->
+            <div id="star-rate-<%= post.id %>"></div>
+            <script>
+            $('#star-rate-<%= post.id %>').raty({
+              size: 36,
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              half: true,
+              readOnly: true,
+              score: <%= post.rate %>,
+            });
+            </script>
+            <!--/星評価-->
             <div class="post-img">
               <%= image_tag post.image.to_s %>
             </div>
             <% if current_user.id == post.user_id %>
-            <%= link_to "投稿を削除", post_path(post.id) ,method: :delete,
+            <%= link_to "削除", post_path(post.id) ,method: :delete,
             data: {confirm: '本当に削除してもよろしいですか？'} %>
+            <%= link_to "編集", edit_post_path(post.id) %>
             <% end %>
           </div>
         </div>

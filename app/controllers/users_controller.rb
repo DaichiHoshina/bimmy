@@ -36,11 +36,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = current_user
-    @user.name = user_params[:name]
-    @user.introduction = user_params[:introduction]
-    @user.image = user_params[:image]
-    if @user.save
+    @user = User.find_by(id: current_user.id)
+    if @user.update(user_params)
       redirect_to user_path, success: '変更が完了しました'
     else
       flash.now[:danger] = '変更に失敗しました'

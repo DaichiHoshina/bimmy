@@ -4,6 +4,8 @@
 PER = 5
 
 class PostsController < ApplicationController
+  before_action :authenticate_user, only: %i[edit update]
+
   def index
     # 県名検索機能
     if params[:prefecture_id]
@@ -36,13 +38,14 @@ class PostsController < ApplicationController
     end
   end
 
+  def edit
+    @post = Post.find(params[:id])
+  end
+
   def update
-    @post = Post.find_by(params: id)
-    @post.name = post_params[:name]
-    @post.introduction = user_params[:introduction]
-    @post.image = user_params[:image]
-    if @user.save
-      redirect_to user_path, success: '変更が完了しました'
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      redirect_to user_path(current_user.id), success: '変更が完了しました'
     else
       flash.now[:danger] = '変更に失敗しました'
       render :edit
