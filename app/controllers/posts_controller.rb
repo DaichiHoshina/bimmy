@@ -40,6 +40,8 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    # 投稿者本人のみ編集可能
+    redirect_to user_path(current_user.id), danger: 'あなたに権限はありません' if @post.user_id != current_user.id
   end
 
   def update

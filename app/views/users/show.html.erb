@@ -14,6 +14,7 @@
     </div>
   </div>
 </div>
+
 <div class="col-md-offset-4 col-md-4">
   <h2>[<%= @user.name %>さんの投稿]</h2>
 </div>
@@ -63,7 +64,8 @@
             <% if current_user.id == post.user_id %>
             <%= link_to "削除", post_path(post.id) ,method: :delete,
             data: {confirm: '本当に削除してもよろしいですか？'} %>
-            <%= link_to "編集", edit_post_path(post.id) %>
+            <%= link_to "編集", edit_post_path(post.id),
+            data: {confirm: '本当に編集してもよろしいですか？'} %>
             <% end %>
           </div>
         </div>
