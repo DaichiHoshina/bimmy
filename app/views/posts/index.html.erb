@@ -29,16 +29,13 @@
             <%= post.user.created_at.strftime("%Y-%m-%d %H:%M") %>
           </p>
           <p class="post-title">
-            [品名]
-            <%= post.title %>
+            品名：<%= post.title %>
           </p>
           <p class="post-title">
-            [県名]
-            <%= post.prefecture.name if post.prefecture_id? %>
+            県名：<%= post.prefecture.name if post.prefecture_id? %>
           </p>
           <p class="post-body">
-            [感想]
-            <%= post.description %>
+            感想：<%= post.description %>
           </p>
           <h4>評価：<%= post.rate %>点</h4>
 
@@ -60,6 +57,8 @@
           <div class="post-img">
             <%= image_tag post.image.to_s %>
           </div>
+
+           <!--  いいね機能 -->
           <% if current_user %>
             <% if !post.like_users.include?(current_user) %>
               <div class="like">
@@ -76,6 +75,7 @@
             <% end %>
           </div>
           <% end %>
+
         <% end %>
         </div>
       </div>

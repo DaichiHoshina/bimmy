@@ -22,7 +22,7 @@
             <%= f.label :"画像" %>
             <%= f.file_field :image %>
           </div>
-                  <!-- 評価 -->
+          <!-- 評価 -->
           <div class="form-group row" id="star">
             <%= f.label :rate,'評価 ', class:'col-md-3 col-form-label' %>
             <%= f.hidden_field :rate, id: :review_star %>
@@ -39,7 +39,7 @@
             half: true,
           });
           </script>
-          d
+
           <div class="form-group">
             <%= f.submit "投稿", class: "btn btn-block btn-primary" %>
           </div>
