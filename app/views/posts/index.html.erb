@@ -32,7 +32,8 @@
             品名：<%= post.title %>
           </p>
           <p class="post-title">
-            県名：<%= post.prefecture.name if post.prefecture_id? %>
+            住所：<%= post.prefecture.name if post.prefecture_id? %>
+            <%= post.city %>
           </p>
           <p class="post-body">
             感想：<%= post.description %>
@@ -75,6 +76,8 @@
             <% end %>
           </div>
           <% end %>
+
+          <%= link_to "地図を表示",  post_map_path(post.id) %>
 
         <% end %>
         </div>

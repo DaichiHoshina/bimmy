@@ -1,48 +1,92 @@
-<%= include_gon %>
+<div class="wrapper">
+  <div class="posts-container">
+    <div class="row">
+      <div class="col-md-offset-4 col-md-4 post-list-container text-left mt-4">
+        <div class="post-list-card">
+          <div class="post-user-image">
+            <%= image_tag post.user.image.to_s %>
+          </div>
+          <div class="post-user-name">
+            <p><%= link_to "@"+"#{post.user.name}",user_path(post.user.id) %></p>
+          </div>
+          <p class="post-info">
+            <%= post.user.created_at.strftime("%Y-%m-%d %H:%M") %>
+          </p>
+          <p class="post-title">
+            品名：<%= post.title %>
+          </p>
+          <p class="post-title">
+            県名：<%= post.prefecture.name if post.prefecture_id? %>
+          </p>
+          <p class="post-body">
+            感想：<%= post.description %>
+          </p>
+          <h4>評価：<%= post.rate %>点</h4>
 
-<script type="text/javascript">
-  function initMap() {
+          <!--星評価-->
+          <div id="star-rate-<%= post.id %>"></div>
+          <script>
+          $('#star-rate-<%= post.id %>').raty({
+            size: 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= post.rate %>,
+          });
+          </script>
 
-    var test = {
-      lat: <%= @map.latitude %>,
-      lng: <%= @map.longitude %>
-    };
-    var map = new google.maps.Map(document.getElementById('map'), {
-      center: test,
-      zoom: 15
-    });
+          <div class="post-img">
+            <%= image_tag post.image.to_s %>
+          </div>
 
-    var transitLayer = new google.maps.TransitLayer();
-    transitLayer.setMap(map);
+          <div class="map">
+          <script type="text/javascript">
+            function initMap() {
 
-    var contentString = '住所：<%= @map.address %>';
-    var infowindow = new google.maps.InfoWindow({content: contentString});
+              var test = {
+                lat: <%= @map.latitude %>,
+                lng: <%= @map.longitude %>
+              };
+              var map = new google.maps.Map(document.getElementById('map'), {
+                center: test,
+                zoom: 15
+              });
 
-    var marker = new google.maps.Marker({position: test, map: map, title: contentString});
+              var transitLayer = new google.maps.TransitLayer();
+              transitLayer.setMap(map);
 
-    marker.addListener('click', function () {
-      infowindow.open(map, marker);
-    });
-  }
-</script>
-<script async="async" defer="defer"
-src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GCP_API_KEY'] %>&callback=initMap"></script>
+              var contentString = '住所：<%= @map.address %>';
+              var infowindow = new google.maps.InfoWindow({content: contentString});
 
-<p id="notice"><%= notice %></p>
+              var marker = new google.maps.Marker({position: test, map: map, title: contentString});
 
-<p>
-  <strong>Address:</strong>
-  <%= @map.address %>
-</p>
+              marker.addListener('click', function () {
+                infowindow.open(map, marker);
+              });
+            }
+          </script>
+          <script async="async" defer="defer"
+          src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GCP_API_KEY'] %>&callback=initMap"></script>
+          <p id="notice"><%= notice %></p>
+          <p>
+            <strong>Address:</strong>
+            <%= @map.address %>
+          </p>
+          <p>
+            <strong>Latitude:</strong>
+            <%= @map.latitude %>
+          </p>
+          <p>
+            <strong>Longitude:</strong>
+            <%= @map.longitude %>
+          </p>
+          <div id="map"></div>
+          </div>
 
-<p>
-  <strong>Latitude:</strong>
-  <%= @map.latitude %>
-</p>
-
-<p>
-  <strong>Longitude:</strong>
-  <%= @map.longitude %>
-</p>
-
-<div id="map"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

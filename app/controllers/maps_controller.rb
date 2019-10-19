@@ -13,7 +13,6 @@ class MapsController < ApplicationController
   # GET /maps/1.json
   def show
     @map = Map.find_by(id: params[:id])
-    gon.api_key = ENV['GCP_API_KEY']
   end
 
   # GET /topics/:topic_id/maps/new
