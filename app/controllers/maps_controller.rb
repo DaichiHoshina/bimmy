@@ -1,30 +1,20 @@
 # frozen_string_literal: true
 
 class MapsController < ApplicationController
-  # before_action :set_map, only: %i[show edit update destroy]
-  # before_action :set_topic, only: %i[index new edit create destroy]
-  # GET /topics/:topic_id/maps
-  # GET /maps.json
   def index
     @maps = Map.all
   end
 
-  # GET /topics/:topic_id/maps/:id
-  # GET /maps/1.json
   def show
     @map = Map.find_by(id: params[:id])
   end
 
-  # GET /topics/:topic_id/maps/new
   def new
     @map = Map.new
   end
 
-  # GET /topics/:topic_id/maps/:id/edit
   def edit; end
 
-  # POST /topics/:topic_id/maps
-  # POST /maps.json
   def create
     @map = Map.new(map_params)
     if @map.save
@@ -35,8 +25,6 @@ class MapsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /topics/:topic_id/maps/:id
-  # PATCH/PUT /maps/1.json
   def update
     respond_to do |format|
       if @map.update(map_params)
