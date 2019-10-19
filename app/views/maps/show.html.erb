@@ -1,4 +1,4 @@
-
+<%= include_gon %>
 
 <script type="text/javascript">
   function initMap() {
@@ -25,7 +25,8 @@
     });
   }
 </script>
-<script async="async" defer="defer" src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBznq8QQNPzq1BmqPU52Y7vbnpJgTK88j8&callback=initMap"></script>
+<script async="async" defer="defer"
+src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GCP_API_KEY'] %>&callback=initMap"></script>
 
 <p id="notice"><%= notice %></p>
 

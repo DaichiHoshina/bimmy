@@ -176,9 +176,12 @@ body {
   }
 }
 
-#map{
-height: 400px;
-width: 400px;
+#map {
+  height: 400px;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:left;
+  width: 80%
 }
 
 footer {
