@@ -5,6 +5,10 @@
   z-index: 10000;
 }
 
+.wrapper {
+  margin-top: 150px;
+}
+
 body {
   letter-spacing: -0.04em;
   background-color: #fafafa;
@@ -66,9 +70,7 @@ body {
   }
 }
 
-.wrapper {
-  margin-top: 100px;
-}
+
 
 .user-contents-container {
   background-color: #fff;
@@ -172,6 +174,11 @@ body {
   a {
     color: #ff2581;
   }
+}
+
+#map{
+height: 400px;
+width: 400px;
 }
 
 footer {

@@ -8,7 +8,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :likes
   has_many :like_users, through: :likes, source: 'user'
-  # belongs_to :map
+  # has_many :maps
 
   mount_uploader :image, ImageUploader
 

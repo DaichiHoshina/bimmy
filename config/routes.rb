@@ -6,10 +6,10 @@ Rails.application.routes.draw do
   resources :users, only: %i[index new create show edit update]
   resources :posts, only: %i[index new create edit update destroy] do
     resource :like, only: %i[create destroy]
+    resource :map, only: %i[create show]
   end
   resources :likes, only: %i[index]
-
-  post 'posts/search', to: 'posts#search'
+  resources :maps
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
