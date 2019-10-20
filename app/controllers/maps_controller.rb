@@ -6,7 +6,7 @@ class MapsController < ApplicationController
   end
 
   def show
-    @map = Map.find_by(id: params[:id])
+    @map = Map.find_by(post_id: params[:post_id])
   end
 
   def new
@@ -16,40 +16,39 @@ class MapsController < ApplicationController
   def edit; end
 
   def create
-    @map = Map.new(map_params)
+    @map = Map.new
+    @map.post_id = params[:post_id]
+
+    # 県名+市町村名を@mapに入れる
+    @address = Post.find_by(id: params[:post_id])
+    @map.address = if !@address.city.nil?
+                     @address.prefecture.name + @address.city
+                   else
+                     @address.prefecture.name
+                   end
+
     if @map.save
-      redirect_to root_path, success: '登録が完了しました'
+      redirect_to post_map_path
     else
-      flash.now[:danger] = '登録に失敗しました'
-      render :new
+      flash.now[:danger] = '地図の登録に失敗しました'
     end
   end
 
   def update
-    respond_to do |format|
-      if @map.update(map_params)
-        format.html { redirect_to topic_map_path(topic_id: @map.topic_id, id: @map.id), notice: 'Map was successfully updated.' }
-        format.json { render :show, status: :ok, location: topic_map_path(topic_id: @map.topic_id, id: @map.id) }
-      else
-        format.html { render :edit }
-        format.json { render json: @map.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+    @map = Map.find_by(post_id: params[:post_id])
 
-  # DELETE /topics/:topic_id/maps/:id
-  # DELETE /maps/1.json
-  def destroy
-    @map.destroy
-    respond_to do |format|
-      format.html { redirect_to topic_maps_path(topic_id: @topic.id), notice: 'Map was successfully destroyed.' }
-      format.json { head :no_content }
+    # 県名+市町村名を@mapに入れる
+    @address = Post.find_by(id: params[:post_id])
+
+    if @map.update(address: @address.prefecture.name + @address.city)
+      redirect_to post_map_path
+    else
+      flash.now[:danger] = '地図の登録に失敗しました'
     end
   end
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_map
     @map = Map.find(params[:id])
   end
@@ -59,6 +58,6 @@ class MapsController < ApplicationController
   end
 
   def map_params
-    params.require(:map).permit(:address, :latitude, :longitude, :topic_id)
+    params.require(:map).permit(:address, :latitude, :longitude, :post_id)
   end
 end

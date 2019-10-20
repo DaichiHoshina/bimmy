@@ -63,14 +63,14 @@
           <% if current_user %>
             <% if !post.like_users.include?(current_user) %>
               <div class="like">
-                <%= link_to post_like_path(post_id: post.id),method: :post do %>
+                <%= link_to post_like_path(post_id: post.id), method: :post do %>
                 <span class="fa fa-heart like-btn"></span>
                 <%= post.like_users.length %>
               <% end %>
             </div>
           <% else %>
             <div class="unlike">
-              <%= link_to post_like_path(post_id: post.id),method: :delete do %>
+              <%= link_to post_like_path(post_id: post.id), method: :delete do %>
               <span class="fa fa-heart like-btn-unlike"></span>
               <%= post.like_users.length %>
             <% end %>
@@ -78,7 +78,9 @@
           <% end %>
           <!--  /いいね機能 -->
 
-          <%= link_to "地図を表示",  post_map_path(post.id) %>
+          <div class=text-center>
+            <%= link_to "【地図を表示】",  post_map_path(post_id: post.id), {method:"put"}  %>
+          </div>
 
         <% end %>
         </div>

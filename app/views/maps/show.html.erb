@@ -3,43 +3,7 @@
     <div class="row">
       <div class="col-md-offset-4 col-md-4 post-list-container text-left mt-4">
         <div class="post-list-card">
-          <div class="post-user-image">
-            <%= image_tag post.user.image.to_s %>
-          </div>
-          <div class="post-user-name">
-            <p><%= link_to "@"+"#{post.user.name}",user_path(post.user.id) %></p>
-          </div>
-          <p class="post-info">
-            <%= post.user.created_at.strftime("%Y-%m-%d %H:%M") %>
-          </p>
-          <p class="post-title">
-            品名：<%= post.title %>
-          </p>
-          <p class="post-title">
-            県名：<%= post.prefecture.name if post.prefecture_id? %>
-          </p>
-          <p class="post-body">
-            感想：<%= post.description %>
-          </p>
-          <h4>評価：<%= post.rate %>点</h4>
-
-          <!--星評価-->
-          <div id="star-rate-<%= post.id %>"></div>
-          <script>
-          $('#star-rate-<%= post.id %>').raty({
-            size: 36,
-            starOff:  '<%= asset_path('star-off.png') %>',
-            starOn : '<%= asset_path('star-on.png') %>',
-            starHalf: '<%= asset_path('star-half.png') %>',
-            half: true,
-            readOnly: true,
-            score: <%= post.rate %>,
-          });
-          </script>
-
-          <div class="post-img">
-            <%= image_tag post.image.to_s %>
-          </div>
+        
 
           <div class="map">
           <script type="text/javascript">
