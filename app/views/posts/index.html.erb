@@ -14,6 +14,7 @@
         <p>県名で検索してください</p>
       <% end %>
     </div>
+    <!-- /県名検索機能 -->
 
     <div class="row">
     <% @posts.each do |post| %>
@@ -39,6 +40,7 @@
             感想：<%= post.description %>
           </p>
           <h4>評価：<%= post.rate %>点</h4>
+
 
           <!-- 星評価 -->
           <div id="star-rate-<%= post.id %>"></div>
@@ -77,10 +79,16 @@
           </div>
           <% end %>
           <!--  /いいね機能 -->
-
-          <div class=text-center>
-            <%= link_to "【地図を表示】",  post_map_path(post_id: post.id), {method:"put"}  %>
-          </div>
+          
+          <% if post.map == nil %>
+            <div class=text-center>
+              <%= link_to "【地図を表示】",  post_map_path(post_id: post.id), {method:"post"}  %>
+            </div>
+          <% else %>
+            <div class=text-center>
+              <%= link_to "【地図を表示】",  post_map_path(post_id: post.id), {method:"put"}  %>
+            </div>
+          <% end %>
 
         <% end %>
         </div>
