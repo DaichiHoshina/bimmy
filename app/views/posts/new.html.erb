@@ -15,20 +15,25 @@
             <%= f.text_area :description, class:"form-control", rows:"3" %>
           </div>
           <div class="form-group">
-          <%= f.label :"県名" %>
+          <%= f.label :"住所(県名)" %>
           <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name %>
+          </div>
+          <div class="form-group">
+          <%= f.label :"住所(市町村以下)" %>
+          <%= f.text_field:city, class: "form-control" %>
           </div>
           <div class="form-group">
             <%= f.label :"画像" %>
             <%= f.file_field :image %>
           </div>
-          <!-- 評価 -->
+
+          <!-- 星評価表示 -->
           <div class="form-group row" id="star">
             <%= f.label :rate,'評価 ', class:'col-md-3 col-form-label' %>
             <%= f.hidden_field :rate, id: :review_star %>
           </div>
 
-          <!-- 評価javascript -->
+          <!-- 星評価javascript -->
           <script>
           $('#star').raty({
             size     : 36,

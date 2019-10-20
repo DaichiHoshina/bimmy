@@ -14,6 +14,7 @@
         <p>県名で検索してください</p>
       <% end %>
     </div>
+    <!-- /県名検索機能 -->
 
     <div class="row">
     <% @posts.each do |post| %>
@@ -32,14 +33,16 @@
             品名：<%= post.title %>
           </p>
           <p class="post-title">
-            県名：<%= post.prefecture.name if post.prefecture_id? %>
+            住所：<%= post.prefecture.name if post.prefecture_id? %>
+            <%= post.city %>
           </p>
           <p class="post-body">
             感想：<%= post.description %>
           </p>
           <h4>評価：<%= post.rate %>点</h4>
 
-          <!--星評価-->
+
+          <!-- 星評価 -->
           <div id="star-rate-<%= post.id %>"></div>
           <script>
           $('#star-rate-<%= post.id %>').raty({
@@ -52,7 +55,7 @@
             score: <%= post.rate %>,
           });
           </script>
-          <!--/星評価-->
+          <!-- /星評価 -->
 
           <div class="post-img">
             <%= image_tag post.image.to_s %>
@@ -62,18 +65,29 @@
           <% if current_user %>
             <% if !post.like_users.include?(current_user) %>
               <div class="like">
-                <%= link_to post_like_path(post_id: post.id),method: :post do %>
+                <%= link_to post_like_path(post_id: post.id), method: :post do %>
                 <span class="fa fa-heart like-btn"></span>
                 <%= post.like_users.length %>
               <% end %>
             </div>
           <% else %>
             <div class="unlike">
-              <%= link_to post_like_path(post_id: post.id),method: :delete do %>
+              <%= link_to post_like_path(post_id: post.id), method: :delete do %>
               <span class="fa fa-heart like-btn-unlike"></span>
               <%= post.like_users.length %>
             <% end %>
           </div>
+          <% end %>
+          <!--  /いいね機能 -->
+          
+          <% if post.map == nil %>
+            <div class=text-center>
+              <%= link_to "【地図を表示】",  post_map_path(post_id: post.id), {method:"post"}  %>
+            </div>
+          <% else %>
+            <div class=text-center>
+              <%= link_to "【地図を表示】",  post_map_path(post_id: post.id), {method:"put"}  %>
+            </div>
           <% end %>
 
         <% end %>

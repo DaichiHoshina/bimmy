@@ -75,6 +75,10 @@ class PostsController < ApplicationController
 
   private
 
+  def map_params
+    params.require(:map).permit(:post_id, :address)
+  end
+
   def post_params
     params.require(:post).permit(:title, :description, :image, :city, :prefecture_id, :rate)
   end

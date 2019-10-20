@@ -1,0 +1,57 @@
+<div class="wrapper">
+  <div class="posts-container">
+    <div class="row">
+      <div class="col-md-offset-4 col-md-4 post-list-container text-left mt-4">
+        <div class="post-list-card">
+
+
+          <div class="map">
+          <script type="text/javascript">
+            function initMap() {
+
+              var test = {
+                lat: <%= @map.latitude %>,
+                lng: <%= @map.longitude %>
+              };
+              var map = new google.maps.Map(document.getElementById('map'), {
+                center: test,
+                zoom: 15
+              });
+
+              var transitLayer = new google.maps.TransitLayer();
+              transitLayer.setMap(map);
+
+              var contentString = '住所：<%= @map.address %>';
+              var infowindow = new google.maps.InfoWindow({content: contentString});
+
+              var marker = new google.maps.Marker({position: test, map: map, title: contentString});
+
+              marker.addListener('click', function () {
+                infowindow.open(map, marker);
+              });
+            }
+          </script>
+          <script async="async" defer="defer"
+          src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GCP_API_KEY'] %>&callback=initMap"></script>
+          <p id="notice"><%= notice %></p>
+          <p>
+            <strong>Address:</strong>
+            <%= @map.address %>
+          </p>
+          <p>
+            <strong>Latitude:</strong>
+            <%= @map.latitude %>
+          </p>
+          <p>
+            <strong>Longitude:</strong>
+            <%= @map.longitude %>
+          </p>
+          <h1> <%= @map.post.id %> </h1>
+          <div id="map"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
