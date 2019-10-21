@@ -41,7 +41,6 @@
           </p>
           <h4>評価：<%= post.rate %>点</h4>
 
-
           <!-- 星評価 -->
           <div id="star-rate-<%= post.id %>"></div>
           <script>
@@ -79,14 +78,14 @@
           </div>
           <% end %>
           <!--  /いいね機能 -->
-          
+
           <% if post.map == nil %>
             <div class=text-center>
-              <%= link_to "【地図を表示】",  post_map_path(post_id: post.id), {method:"post"}  %>
+              <%= link_to "【周辺地図を表示】",  post_map_path(post_id: post.id), {method:"post"}  %>
             </div>
           <% else %>
             <div class=text-center>
-              <%= link_to "【地図を表示】",  post_map_path(post_id: post.id), {method:"put"}  %>
+              <%= link_to "【周辺地図を表示】",  post_map_path(post_id: post.id), {method:"put"}  %>
             </div>
           <% end %>
 
