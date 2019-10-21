@@ -20,12 +20,13 @@ https://mysterious-sands-64106.herokuapp.com
 6.ページネーション機能  
 7.星評価機能  
 8.県名検索機能  
-9.MAP表示機能(Google Maps API)  
+9.MAP表示機能(Google API)  
 
 ## 注目して欲しい点
 ・dockerで開発環境を構築していること  
 ・CircleCIで自動でのテストとデプロイを実装していること
 ・実践を意識して、ブランチを切って開発をしていること
+・GCPでマップ機能を実装していること
 
 ## 使用技術
 - 言語/フレームワーク
@@ -35,11 +36,14 @@ https://mysterious-sands-64106.herokuapp.com
     - Atom
 - 本番環境
     - heroku
-    - AWS
-        - S3
 - 使用技術
     - CircleCI
     - GitHub
+    - AWS
+        - S3
+    - GCP
+        - Geocoding API
+        - Maps JavaScript API
 - コード整形
     - Rubocop
 - テスト
@@ -48,4 +52,3 @@ https://mysterious-sands-64106.herokuapp.com
 ## 今後の課題
 ・herokuからAWSを使ったデプロイに切り替える。  
 ・テストの数が少ないので充実させていく。  
-・地図で番地の検索が出来ないので、改善する。

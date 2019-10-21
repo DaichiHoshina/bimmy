@@ -6,9 +6,13 @@ class Post < ApplicationRecord
   validates :image, presence: true
 
   belongs_to :user
-  has_many :likes
+  has_many :likes, dependent: :destroy
   has_many :like_users, through: :likes, source: 'user'
   has_one :map
+
+  def favorited_by?(user)
+    favorites.where(user_id: user.id).exists?
+  end
 
   mount_uploader :image, ImageUploader
 

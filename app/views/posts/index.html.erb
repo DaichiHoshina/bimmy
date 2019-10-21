@@ -9,7 +9,7 @@
       <% end %>
       <% if params[:prefecture_id] != nil && @posts != nil %>
         <h4>【<%= @name %>】の検索結果を表示中です</h4>
-        <p>検索結果:<%= @posts_count %>件</p>
+        <h4>検索結果:  <%= @posts_count %>件</h4>
       <% else %>
         <p>県名で検索してください</p>
       <% end %>
@@ -61,35 +61,21 @@
           </div>
 
            <!--  いいね機能 -->
-          <% if current_user %>
-            <% if !post.like_users.include?(current_user) %>
-              <div class="like">
-                <%= link_to post_like_path(post_id: post.id), method: :post do %>
-                <span class="fa fa-heart like-btn"></span>
-                <%= post.like_users.length %>
-              <% end %>
-            </div>
-          <% else %>
-            <div class="unlike">
-              <%= link_to post_like_path(post_id: post.id), method: :delete do %>
-              <span class="fa fa-heart like-btn-unlike"></span>
-              <%= post.like_users.length %>
-            <% end %>
-          </div>
-          <% end %>
+           <!-- ↓追加(部分的に更新したい場所)↓ -->
+           <div id="likes_buttons_<%= post.id %>">
+              <%= render partial: 'likes/like', locals: { post: post} %>
+           </div>
+          <!-- ↑ここまで↑ -->
           <!--  /いいね機能 -->
 
-          <% if post.map == nil %>
-            <div class=text-center>
-              <%= link_to "【周辺地図を表示】",  post_map_path(post_id: post.id), {method:"post"}  %>
+            <div class="text-center">
+              <%= link_to post_map_path(post_id: post.id), method: :post do %>
+                <button class="btn btn-primary">周辺地図を表示</button>
+              <% end %>
             </div>
-          <% else %>
-            <div class=text-center>
-              <%= link_to "【周辺地図を表示】",  post_map_path(post_id: post.id), {method:"put"}  %>
-            </div>
-          <% end %>
 
-        <% end %>
+
+
         </div>
       </div>
     <% end %>
