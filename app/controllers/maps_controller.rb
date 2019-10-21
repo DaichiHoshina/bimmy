@@ -16,21 +16,25 @@ class MapsController < ApplicationController
   def edit; end
 
   def create
-    @map = Map.new
-    @map.post_id = params[:post_id]
+    # mapが空ならcreate、あればupdateアクションを呼び出す
+    post = Post.find_by(id: params[:post_id])
+    if post.map.nil?
+      @map = Map.new
+      @map.post_id = params[:post_id]
 
-    # 県名+市町村名を@mapに入れる
-    @address = Post.find_by(id: params[:post_id])
-    @map.address = if !@address.city.nil?
-                     @address.prefecture.name + @address.city
-                   else
-                     @address.prefecture.name
-                   end
+      # 県名+市町村名を@mapに入れる
+      @address = Post.find_by(id: params[:post_id])
 
-    if @map.save
-      redirect_to post_map_path
+      # 市町村名があれば、県名と連結してmapに渡す
+      @map.address = if !@address.city.nil?
+                       @address.prefecture.name + @address.city
+                     else
+                       @address.prefecture.name
+                     end
+
+      redirect_to post_map_path if @map.save
     else
-      flash.now[:danger] = '地図の登録に失敗しました'
+      redirect_to post_map_path(post_id: post.id), method: 'put'
     end
   end
 

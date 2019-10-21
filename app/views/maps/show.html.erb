@@ -2,57 +2,56 @@
   <div class="posts-container">
     <div class="row">
       <h1 class="text-center">周辺地図</h1>
-      <div class="col-md-offset-4 col-md-4 post-list-container text-left mt-4">
+      <div class="col-md-offset-2 col-md-8 post-list-container text-left mt-4">
         <div class="post-list-card">
 
-          <div class="map">
-          <script type="text/javascript">
-            function initMap() {
+          <div id="gmap"></div> <!-- 地図を表示する領域 -->
+          <p id="address"><%= @map.address %></p> <!-- 住所 -->
 
-              var test = {
-                lat: <%= @map.latitude %>,
-                lng: <%= @map.longitude %>
-              };
-              var map = new google.maps.Map(document.getElementById('map'), {
-                center: test,
-                zoom: 15
-              });
+          <script>
+          function initMap() {
+            var target = document.getElementById('gmap');
+            var address = document.getElementById('address').textContent;
+            var geocoder = new google.maps.Geocoder();
 
-              var transitLayer = new google.maps.TransitLayer();
-              transitLayer.setMap(map);
+            geocoder.geocode({ address: address }, function(results, status){
+               if (status === 'OK' && results[0]){
+                 //マップのインスタンスを変数に代入
+                  var map = new google.maps.Map(target, {
+                    center: results[0].geometry.location,
+                    zoom: 15
+                  });
 
-              var contentString = '住所：<%= @map.address %>';
-              var infowindow = new google.maps.InfoWindow({content: contentString});
+                 //マーカーの生成
+                  var marker = new google.maps.Marker({
+                    position: results[0].geometry.location,
+                    map: map,
+                    animation: google.maps.Animation.DROP
+                  });
 
-              var marker = new google.maps.Marker({position: test, map: map, title: contentString});
+                 //情報ウィンドウの生成
+                  var infoWindow = new google.maps.InfoWindow({
+                    content: '<%= @map.post.title %>',
+                    pixelOffset: new google.maps.Size(0, 5)
+                  });
 
-              marker.addListener('click', function () {
-                infowindow.open(map, marker);
-              });
-            }
+                 //マーカーにリスナーを設定
+                 marker.addListener('click', function(){
+                    infoWindow.open(map, marker);
+                  });
+
+               }else{
+                 alert('失敗しました。理由: ' + status);
+                 return;
+               }
+            });
+          }
           </script>
+          <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GCP_API_KEY'] %>&callback=initMap" async defer></script>
 
-          <script async="async" defer="defer"
-          src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GCP_API_KEY'] %>&callback=initMap"></script>
-          <p id="notice"><%= notice %></p>
-          <p>
-            <strong>住所:</strong>
-            <%= @map.address %>
-          </p>
-          <p>
-            <strong>Latitude:</strong>
-            <%= @map.latitude %>
-          </p>
-          <p>
-            <strong>Longitude:</strong>
-            <%= @map.longitude %>
-          </p>
-          <div id="map"></div>
-          </div>
-
-          <div class="text-center">  
+          <div class="text-center">
             <%= link_to :back do %>
-              <button>前の画面に戻る</button>
+              <button>戻る</button>
             <% end %>
           </div>
 
