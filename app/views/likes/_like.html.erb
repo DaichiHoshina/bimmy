@@ -1,0 +1,20 @@
+<% if user %>
+  
+  <% if !user.like_posts.include?(post) %>
+    <div class="like">
+      <%= link_to post_like_path(post_id: post.id), method: :post,
+      id: "like-button", remote: true do %>
+        <span class="fa fa-heart like-btn" id="<%= post.id %>"></span>
+        <%= post.like_users.length %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="unlike">
+      <%= link_to post_like_path(post_id: post.id), method: :delete,
+        id: "like-button", remote: true do %>
+        <span class="fa fa-heart like-btn-unlike" id="<%= post.id %>"></span>
+        <%= post.like_users.length %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
