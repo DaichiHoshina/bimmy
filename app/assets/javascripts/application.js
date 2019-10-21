@@ -18,11 +18,6 @@
 //= require_tree .
 
 
-//いいね機能
-.like-button{:class => "like-button-#{diary.id}"}
-  = render "diary_likes/like", diary: diary, user_id: diary.user_id
-
-
 
 (function($) {
   'use strict';

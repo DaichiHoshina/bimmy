@@ -63,7 +63,7 @@
            <!--  いいね機能 -->
            <!-- ↓追加(部分的に更新したい場所)↓ -->
            <div id="likes_buttons_<%= post.id %>">
-              <%= render partial: 'likes/like', locals: { post: post} %>
+              <%= render partial: 'likes/like', locals: { post: post, user: current_user } %>
            </div>
           <!-- ↑ここまで↑ -->
           <!--  /いいね機能 -->
