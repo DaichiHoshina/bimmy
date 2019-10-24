@@ -26,7 +26,7 @@
             <h4>評価：<%= post.rate %>点</h4>
 
             <!--星評価-->
-            <div id="star-rate-<%= post.id %>"></div>
+            <div class="post-star" id="star-rate-<%= post.id %>"></div>
             <script>
             $('#star-rate-<%= post.id %>').raty({
               size: 36,
@@ -39,9 +39,17 @@
             });
             </script>
             <!--/星評価-->
+
             <div class="post-img">
               <%= image_tag post.image.to_s %>
             </div>
+
+            <div class="text-center post-map">
+              <%= link_to post_map_path(post_id: post.id), method: :post do %>
+                <button class="btn btn-primary">周辺地図を表示</button>
+              <% end %>
+            </div>
+
           </div>
         </div>
       <% end %>

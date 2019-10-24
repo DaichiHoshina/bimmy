@@ -144,8 +144,24 @@ body {
     }
   }
 
+  .post-map {
+      margin-top : 20px;
+  }
+
+  .post-star {
+    img {
+      height: 20px;
+    }
+  }
+
   .star {
     display: flex;
+  }
+}
+
+.new-post-star {
+  img {
+    height: 25px;
   }
 }
 
