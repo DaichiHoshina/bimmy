@@ -1,25 +1,25 @@
 <div class="wrapper">
   <div class="container">
     <div class="row">
-      <div class="col-md-offset-4 col-md-4 posts-new-container">
+      <div class="col-md-offset-3 col-md-6 posts-new-container">
         <h1 class="text-center text-white">新規投稿</h1>
         <h3></h3>
         <%= form_for @post do |f| %>
         <%= render 'layouts/error_messages', model: f.object %>
           <div class="form-group">
-            <%= f.label :"店名" %>
+            <%= f.label :"店名(30文字以内)" %>
             <%= f.text_field:store, class: "form-control" %>
           </div>
           <div class="form-group">
-            <%= f.label :"品名" %>
+            <%= f.label :"品名 ※必須(30文字以内)" %>
             <%= f.text_field:title, class: "form-control" %>
           </div>
           <div class="form-group">
-            <%= f.label :"感想" %>
+            <%= f.label :"感想 ※必須(200文字以内)" %>
             <%= f.text_area :description, class:"form-control", rows:"3" %>
           </div>
           <div class="form-group">
-          <%= f.label :"住所(県名)" %>
+          <%= f.label :"住所(県名) ※必須" %>
           <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name %>
           </div>
           <div class="form-group">
@@ -27,13 +27,13 @@
           <%= f.text_field:city, class: "form-control" %>
           </div>
           <div class="form-group">
-            <%= f.label :"画像" %>
+            <%= f.label :"画像 ※必須" %>
             <%= f.file_field :image %>
           </div>
 
           <!-- 星評価表示 -->
           <div class="form-group row new-post-star" " id="star">
-            <%= f.label :rate,'評価 ', class:'col-md-3 col-form-label' %>
+            <%= f.label :"評価 ※必須", class:'col-md-3 col-form-label' %>
             <%= f.hidden_field :rate, id: :review_star %>
           </div>
 
