@@ -31,9 +31,6 @@
 
             <% if current_user %>
               <li>
-                <%= link_to "マイページ",user_path(current_user.id) %>
-              </li>
-              <li>
                 <%= link_to "投稿する",new_post_path %>
               </li>
               <li>
@@ -47,6 +44,12 @@
               </li>
               <li>
                 <%= link_to "ログアウト",logout_path ,{method:"post"} %>
+              </li>
+              <li >
+                <div class="current-user-image col-md-12">
+                  <%= image_tag current_user.image.to_s %>
+                  <%= link_to "#{current_user.name}",user_path(current_user.id) %>
+                </div>
               </li>
             <% end %>
 
