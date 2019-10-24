@@ -35,6 +35,9 @@
               <%= post.user.created_at.strftime("%Y-%m-%d %H:%M") %>
             </p>
             <p class="post-title">
+              店名：<%= post.store %>
+            </p>
+            <p class="post-title">
               品名：<%= post.title %>
             </p>
             <p class="post-title">
@@ -42,7 +45,7 @@
               <%= post.city %>
             </p>
             <p class="post-body">
-              <%= post.description %>
+              感想：<%= post.description %>
             </p>
             <h4>評価：<%= post.rate %>点</h4>
 
