@@ -1,28 +1,7 @@
 <div class="wrapper">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-offset-4 col-md-4 user-contents-container text-center">
-        <h2><%= @user.name %></h2>
-        <p class="introduction"><%= simple_format(@user.introduction) %></p>
-        <div class="user-image">
-          <%= image_tag @user.image.to_s %>
-        </div>
-        <% if current_user.id == @user.id %>
-          <%= link_to "プロフィール編集", edit_user_path %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<div class="wrapper">
-  <div class="col-md-offset-4 col-md-4">
-    <h2>[<%= @user.name %>さんの投稿]</h2>
-  </div>
   <div class="posts-container">
     <div class="row">
-      <% @user_posts .each do |post| %>
+      <% @like_posts .each do |post| %>
         <div class="col-md-offset-4 col-md-4 post-list-container text-left mt-4">
           <div class="post-list-card">
             <div class="post-user-image">
@@ -62,7 +41,7 @@
               score: <%= post.rate %>,
             });
             </script>
-            <!--星評価-->
+            <!--/星評価-->
 
             <div class="post-img">
               <%= image_tag post.image.to_s %>
@@ -74,22 +53,12 @@
               <% end %>
             </div>
 
-            <!-- 編集機能 -->
-            <div class="text-right">
-              <% if current_user.id == post.user_id %>
-              <%= link_to "削除", post_path(post.id) ,method: :delete,
-              data: {confirm: '本当に削除してもよろしいですか？'} %>
-              <%= link_to "編集", edit_post_path(post.id),
-              data: {confirm: '本当に編集してもよろしいですか？'} %>
-              <% end %>
-            </div>
-
           </div>
         </div>
       <% end %>
     </div>
     <div class="paginate text-center">
-      <%= paginate @user_posts %>
+      <%= paginate @like_posts %>
     </div>
   </div>
 </div>

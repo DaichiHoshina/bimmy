@@ -13,8 +13,6 @@ class MapsController < ApplicationController
     @map = Map.new
   end
 
-  def edit; end
-
   def create
     # mapが空ならcreate、あればupdateアクションを呼び出す
     post = Post.find_by(id: params[:post_id])
