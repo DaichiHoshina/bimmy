@@ -1,7 +1,8 @@
 <div class="wrapper">
   <div class="posts-container">
+    <h1 class="text-center">人気記事ランキング</h1>
     <div class="row">
-      <% @like_posts .each do |post| %>
+      <% @likes_ranking.each do |post| %>
         <div class="col-md-offset-4 col-md-4 post-list-container text-left mt-4">
           <div class="post-list-card">
             <div class="post-user-image">
@@ -47,6 +48,12 @@
               <%= image_tag post.image.to_s %>
             </div>
 
+            <div class="unlike">
+              <p class="fa fa-heart like-btn-unlike">
+                <%= post.like_users.length %>
+              </p>    
+            </div>
+
             <div class="text-center post-map">
               <%= link_to post_map_path(post_id: post.id), method: :post do %>
                 <button class="btn btn-primary">周辺地図を表示</button>
@@ -58,7 +65,7 @@
       <% end %>
     </div>
     <div class="paginate text-center">
-      <%= paginate @like_posts %>
+      <%= paginate @likes_ranking %>
     </div>
   </div>
 </div>

@@ -31,10 +31,7 @@
 
             <% if current_user %>
               <li>
-                <%= link_to "投稿する",new_post_path %>
-              </li>
-              <li>
-                <%= link_to "人気投稿",likes_path %>
+                <%= link_to "人気投稿",rankings_path %>
               </li>
               <li>
                 <%= link_to "Myいいね",likes_path %>
@@ -44,6 +41,9 @@
               </li>
               <li>
                 <%= link_to "登録者一覧",users_path %>
+              </li>
+              <li>
+                <%= link_to "投稿する",new_post_path %>
               </li>
               <li>
                 <%= link_to "ログアウト",logout_path ,{method:"post"} %>

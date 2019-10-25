@@ -18,15 +18,17 @@ body {
 }
 
 .current-user-image {
-    display: flex;
-    padding-top: 10px;
+  display: flex;
+  padding-top: 10px;
+
   img {
     width: 30px;
     height: 30px;
     border-radius: 100%;
   }
+
   a {
-     padding: 5px 0px 0px 2px;
+    padding: 5px 0 0 2px;
   }
 }
 
@@ -202,6 +204,11 @@ body {
 .unlike {
   a {
     color: #ff2581;
+  }
+
+  p {
+    color: #ff2581;
+    font-size: 15px;
   }
 }
 
