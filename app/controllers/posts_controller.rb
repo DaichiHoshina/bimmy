@@ -15,13 +15,25 @@ class PostsController < ApplicationController
       @name = @int.prefecture.name
 
       @post = Post.where('prefecture_id IN(?)', params[:prefecture_id])
+
       @count = @post.count
-      @posts_search = Post.where('prefecture_id IN(?)', params[:prefecture_id]).order(created_at: :desc)
-      @posts = @posts_search.page(params[:page]).per(PER).order(created_at: :desc)
+
+      @posts_search = Post.where('prefecture_id IN(?)',
+                                 params[:prefecture_id])
+                          .order(created_at: :desc)
+
+      @posts = @posts_search.page(params[:page])
+                            .per(PER)
+                            .order(created_at: :desc)
+                            .includes(:user, :likes, :like_users)
+
       @posts_count = @posts_search.length
 
     else
-      @posts = Post.page(params[:page]).per(PER).order(created_at: :desc)
+      @posts = Post.page(params[:page])
+                   .per(PER)
+                   .order(created_at: :desc)
+                   .includes(:user, :likes, :like_users)
     end
   end
 
