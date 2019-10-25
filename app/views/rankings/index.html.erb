@@ -2,7 +2,7 @@
   <div class="posts-container">
     <h1 class="text-center">人気記事ランキング</h1>
     <div class="row">
-      <% @likes_ranking.each do |post| %>
+      <% @likes.each do |post| %>
         <div class="col-md-offset-4 col-md-4 post-list-container text-left mt-4">
           <div class="post-list-card">
             <div class="post-user-image">
@@ -51,7 +51,7 @@
             <div class="unlike">
               <p class="fa fa-heart like-btn-unlike">
                 <%= post.like_users.length %>
-              </p>    
+              </p>
             </div>
 
             <div class="text-center post-map">
@@ -63,9 +63,6 @@
           </div>
         </div>
       <% end %>
-    </div>
-    <div class="paginate text-center">
-      <%= paginate @likes_ranking %>
     </div>
   </div>
 </div>

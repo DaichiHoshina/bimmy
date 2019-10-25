@@ -68,6 +68,12 @@
               <%= image_tag post.image.to_s %>
             </div>
 
+            <div class="unlike">
+              <p class="fa fa-heart like-btn-unlike">
+                <%= post.like_users.length %>
+              </p>
+            </div>
+
             <div class="text-center post-map">
               <%= link_to post_map_path(post_id: post.id), method: :post do %>
                 <button class="btn btn-primary">周辺地図を表示</button>
