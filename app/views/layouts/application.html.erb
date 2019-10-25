@@ -11,13 +11,17 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!-- googleフォント -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Economica:700 rel="stylesheet">
+
   </head>
 
   <body>
     <nav class="navbar navbar-default navbar-expand-md navbar-fixed-top">
       <div class="nav-container nav">
         <ul class="nav navbar-nav navbar-left">
-          <li><%= link_to "BiMMy",root_path %></li>
+          <li><%= link_to "BiMMy", root_path, id: "logo" %></li>
         </ul>
 
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
