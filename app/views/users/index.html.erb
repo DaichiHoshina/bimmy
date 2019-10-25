@@ -4,10 +4,10 @@
       <div class="col-md-offset-3 col-md-6 users-list-container">
       <% @users.each do |user| %>
           <div class="users-list-card col-md-4">
-            <p><%= link_to "#{user.name}",user_path(user.id) %></p>
-            <div class="wuser-image">
+            <div class="user-image">
               <%= image_tag user.image.to_s %>
             </div>
+            <p><%= link_to "#{user.name}",user_path(user.id) %></p>
           </div>
       <% end %>
       </div>
