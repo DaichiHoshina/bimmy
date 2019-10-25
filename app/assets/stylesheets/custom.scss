@@ -26,8 +26,8 @@
 .wrapper {
   margin-top: 150px;
 }
-
 @import url('https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c&display=swap');
+
 body {
   letter-spacing: -0.04em;
   background-color: #fafafa;
@@ -48,6 +48,7 @@ body {
   }
 
   a {
+    font-weight: bold;
     padding: 5px 0 0 2px;
   }
 }
@@ -97,6 +98,10 @@ body {
 
   .navbar-collapse {
     margin-right: 40px;
+  }
+
+  .navbutton {
+    color: #000000;
   }
 }
 

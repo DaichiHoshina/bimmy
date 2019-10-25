@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=360,initial-scale=1">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -35,22 +36,23 @@
 
             <% if current_user %>
               <li>
-                <%= link_to "人気投稿",rankings_path %>
+                <%= link_to "人気投稿", rankings_path, class:"fas fa-crown font-weight-normal" %>
               </li>
               <li>
-                <%= link_to "Myいいね",likes_path %>
+                <%= link_to "Myいいね", likes_path, class:"fa fa-heart" %>
               </li>
               <li>
-                <%= link_to "投稿一覧",posts_path %>
+                <%= link_to "投稿一覧", posts_path, class:"fa fa-comments" %>
               </li>
               <li>
-                <%= link_to "登録者一覧",users_path %>
+                <%= link_to "登録者一覧", users_path, class:"fas fa-user" %>
               </li>
               <li>
-                <%= link_to "投稿する",new_post_path %>
+                <%= link_to "投稿する", new_post_path, class:"fas fa-edit" %>
               </li>
               <li>
-                <%= link_to "ログアウト",logout_path ,{method:"post"} %>
+                <%= link_to "ログアウト", logout_path, method:"post",
+                    class:"fas fa-sign-out-alt" %>
               </li>
               <li >
                 <div class="current-user-image col-md-12">
@@ -62,16 +64,16 @@
 
             <% if !current_user %>
               <li>
-                <%= link_to "投稿一覧",posts_path %>
+                <%= link_to "投稿一覧", posts_path, class:"fa fa-comments" %>
               </li>
               <li>
-                <%= link_to "登録者一覧",users_path %>
+                <%= link_to "登録者一覧", users_path, class:"fas fa-user" %>
               </li>
               <li>
-                <%= link_to "新規登録",new_user_path %>
+                <%= link_to "新規登録",new_user_path, class:"fas fa-user-edit" %>
               </li>
               <li>
-                <%= link_to "ログイン",login_path %>
+                <%= link_to "ログイン",login_path, class:"fas fa-sign-in-alt" %>
               </li>
             <% end %>
 
