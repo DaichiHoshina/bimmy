@@ -3,50 +3,54 @@
     <div class="row">
       <div class="col-md-offset-4 col-md-4 posts-new-container">
         <h1 class="text-center text-white">投稿編集</h1>
-        <h3></h3>
         <%= form_for @post do |f| %>
         <%= render 'layouts/error_messages', model: f.object %>
-          <div class="form-group">
-            <%= f.label :"料理名" %>
-            <%= f.text_field:title, class: "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= f.label :"感想" %>
-            <%= f.text_area :description, class:"form-control", rows:"3" %>
-          </div>
-          <div class="form-group">
-          <%= f.label :"住所(県名)" %>
-          <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name %>
-          </div>
-          <div class="form-group">
-          <%= f.label :"住所(市町村以下)" %>
-          <%= f.text_field:city, class: "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= f.label :"画像" %>
-            <%= f.file_field :image %>
-          </div>
-          <!-- 評価 -->
-          <div class="form-group row" id="star">
-            <%= f.label :rate,'評価 ', class:'col-md-3 col-form-label' %>
-            <%= f.hidden_field :rate, id: :review_star %>
-          </div>
+        <div class="form-group">
+          <%= f.label :"店名(30文字以内)" %>
+          <%= f.text_field:store, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :"品名 ※必須(30文字以内)" %>
+          <%= f.text_field:title, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :"感想 ※必須(200文字以内)" %>
+          <%= f.text_area :description, class:"form-control", rows:"4" %>
+        </div>
+        <div class="form-group">
+        <%= f.label :"住所(県名) ※必須" %>
+        <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name %>
+        </div>
+        <div class="form-group">
+        <%= f.label :"住所(市町村以下)" %>
+        <%= f.text_field:city, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :"画像 ※必須" %>
+          <%= f.file_field :image %>
+        </div>
 
-          <!-- 評価javascript -->
-          <script>
-          $('#star').raty({
-            size     : 36,
-            starOff:  '<%= asset_path('star-off.png') %>',
-            starOn : '<%= asset_path('star-on.png') %>',
-            starHalf: '<%= asset_path('star-half.png') %>',
-            scoreName: 'post[rate]',
-            half: true,
-          });
-          </script>
+        <!-- 星評価 -->
+        <div class="form-group row new-post-star" id="star">
+          <%= f.label :rate,'評価 ', class:'col-md-4 col-form-label' %>
+          <%= f.hidden_field :rate, id: :review_star %>
+        </div>
 
-          <div class="form-group">
-            <%= f.submit "更新", class: "btn btn-block btn-primary" %>
-          </div>
+        <!-- 星評価javascript -->
+        <script>
+        $('#star').raty({
+          size     : 36,
+          starOff:  '<%= asset_path('star-off.png') %>',
+          starOn : '<%= asset_path('star-on.png') %>',
+          starHalf: '<%= asset_path('star-half.png') %>',
+          scoreName: 'post[rate]',
+          half: true,
+        });
+        </script>
+
+        <div class="form-group">
+          <%= f.submit "更新", class: "btn btn-block btn-primary" %>
+        </div>
         <% end %>
       </div>
     </div>

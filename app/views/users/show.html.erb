@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-offset-4 col-md-4 user-contents-container text-center">
         <h2><%= @user.name %></h2>
-        <p class="introduction"><%= @user.introduction %></p>
+        <p class="introduction"><%= simple_format(@user.introduction) %></p>
         <div class="user-image">
           <%= image_tag @user.image.to_s %>
         </div>
@@ -15,10 +15,11 @@
   </div>
 </div>
 
-<div class="col-md-offset-4 col-md-4">
-  <h2>[<%= @user.name %>さんの投稿]</h2>
-</div>
+
 <div class="wrapper">
+  <div class="col-md-offset-4 col-md-4">
+    <h2>[<%= @user.name %>さんの投稿]</h2>
+  </div>
   <div class="posts-container">
     <div class="row">
       <% @user_posts .each do |post| %>
@@ -34,6 +35,9 @@
               <%= post.user.created_at.strftime("%Y-%m-%d %H:%M") %>
             </p>
             <p class="post-title">
+              店名：<%= post.store %>
+            </p>
+            <p class="post-title">
               品名：<%= post.title %>
             </p>
             <p class="post-title">
@@ -41,12 +45,12 @@
               <%= post.city %>
             </p>
             <p class="post-body">
-              <%= post.description %>
+              感想：<%= simple_format(post.description) %>
             </p>
             <h4>評価：<%= post.rate %>点</h4>
 
             <!--星評価-->
-            <div id="star-rate-<%= post.id %>"></div>
+            <div class="post-star" id="star-rate-<%= post.id %>"></div>
             <script>
             $('#star-rate-<%= post.id %>').raty({
               size: 36,
@@ -62,6 +66,18 @@
 
             <div class="post-img">
               <%= image_tag post.image.to_s %>
+            </div>
+
+            <div class="unlike">
+              <p class="fa fa-heart like-btn-unlike">
+                <%= post.like_users.length %>
+              </p>
+            </div>
+
+            <div class="text-center post-map">
+              <%= link_to post_map_path(post_id: post.id), method: :post do %>
+                <button class="btn btn-primary">周辺地図を表示</button>
+              <% end %>
             </div>
 
             <!-- 編集機能 -->

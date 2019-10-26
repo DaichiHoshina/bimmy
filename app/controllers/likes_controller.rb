@@ -7,7 +7,10 @@ class LikesController < ApplicationController
 
   def index
     @posts = current_user.like_posts.order(created_at: :desc)
-    @like_posts = @posts.page(params[:page]).per(PER).order(created_at: :desc)
+    @like_posts = @posts.page(params[:page])
+                        .per(PER)
+                        .order(created_at: :desc)
+                        .includes(:user)
   end
 
   def create

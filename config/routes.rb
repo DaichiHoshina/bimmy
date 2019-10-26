@@ -9,7 +9,8 @@ Rails.application.routes.draw do
     resource :map, only: %i[create show update]
   end
   resources :likes, only: %i[index]
-  resources :maps
+  resources :maps, only: %i[index new create show update]
+  resources :rankings, only: %i[index]
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

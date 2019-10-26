@@ -30,6 +30,9 @@
             <%= post.user.created_at.strftime("%Y-%m-%d %H:%M") %>
           </p>
           <p class="post-title">
+            店名：<%= post.store %>
+          </p>
+          <p class="post-title">
             品名：<%= post.title %>
           </p>
           <p class="post-title">
@@ -37,12 +40,12 @@
             <%= post.city %>
           </p>
           <p class="post-body">
-            感想：<%= post.description %>
+            感想：<%= simple_format(post.description) %>
           </p>
           <h4>評価：<%= post.rate %>点</h4>
 
           <!-- 星評価 -->
-          <div id="star-rate-<%= post.id %>"></div>
+          <div class="post-star" id="star-rate-<%= post.id %>"></div>
           <script>
           $('#star-rate-<%= post.id %>').raty({
             size: 36,
@@ -61,21 +64,16 @@
           </div>
 
            <!--  いいね機能 -->
-           <!-- ↓追加(部分的に更新したい場所)↓ -->
            <div id="likes_buttons_<%= post.id %>">
               <%= render partial: 'likes/like', locals: { post: post, user: current_user } %>
            </div>
-          <!-- ↑ここまで↑ -->
           <!--  /いいね機能 -->
 
-            <div class="text-center">
-              <%= link_to post_map_path(post_id: post.id), method: :post do %>
-                <button class="btn btn-primary">周辺地図を表示</button>
-              <% end %>
-            </div>
-
-
-
+          <div class="text-center post-map">
+            <%= link_to post_map_path(post_id: post.id), method: :post do %>
+              <button class="btn btn-primary">周辺地図を表示</button>
+            <% end %>
+          </div>
         </div>
       </div>
     <% end %>

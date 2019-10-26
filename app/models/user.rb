@@ -3,6 +3,8 @@
 class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 15 }, uniqueness: true
 
+  validates :introduction, length: { maximum: 100 }
+
   # メールアドレスは~@~.~の形で記入
   validates :email, presence: true,
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },

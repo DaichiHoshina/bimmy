@@ -5,16 +5,52 @@
   z-index: 10000;
 }
 
+#logo {
+  float: left;
+  font-family: 'Economica', sans-serif;
+  margin-right: 10px;
+  margin-left: 20px;
+  font-size: 2em;
+  color: #fff;
+  padding-top: 12px;
+  font-weight: bold;
+  line-height: 1;
+  opacity: 0.8;
+}
+
+#logo:hover {
+  color: #fff;
+  opacity: 0.4;
+}
+
 .wrapper {
   margin-top: 150px;
 }
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c&display=swap');
 
 body {
   letter-spacing: -0.04em;
   background-color: #fafafa;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
   color: #000000;
   height: 100vh;
   width: 100vw;
+}
+
+.current-user-image {
+  display: flex;
+  padding-top: 10px;
+
+  img {
+    width: 30px;
+    height: 30px;
+    border-radius: 20%;
+  }
+
+  a {
+    font-weight: bold;
+    padding: 5px 0 0 2px;
+  }
 }
 
 .top-wrapper {
@@ -56,8 +92,16 @@ body {
     text-decoration: none;
   }
 
+  .nav a:hover {
+    opacity: 0.4;
+  }
+
   .navbar-collapse {
     margin-right: 40px;
+  }
+
+  .navbutton {
+    color: #000000;
   }
 }
 
@@ -69,8 +113,6 @@ body {
     margin-bottom: 20px;
   }
 }
-
-
 
 .user-contents-container {
   background-color: #fff;
@@ -95,12 +137,11 @@ body {
 }
 
 .post-user-image {
-  display: flex;
-
   img {
+    display: flex;
     width: 40px;
     height: 40px;
-    border-radius: 100%;
+    border-radius: 20%;
   }
 
   .star {
@@ -118,14 +159,16 @@ body {
   border-radius: 3px;
   margin-bottom: 10px;
 
-  .post-user-name {
-    font-size: 10px;
-    display: flex;
+  .post-user-name a {
+    font-size: 13px;
   }
 
   .post-info {
-    font-size: 5px;
-    color: #999999;
+    p {
+      font-size: 10px;
+      color: #999999;
+      padding-top: 10px;
+    }
   }
 
   .post-title {
@@ -144,8 +187,24 @@ body {
     }
   }
 
+  .post-map {
+    margin-top: 20px;
+  }
+
+  .post-star {
+    img {
+      height: 20px;
+    }
+  }
+
   .star {
     display: flex;
+  }
+
+  .new-post-star {
+    img {
+      height: 25px;
+    }
   }
 }
 
@@ -153,7 +212,12 @@ body {
   padding-bottom: 15px;
 
   p {
+     margin-bottom: -1px;
+  }
+
+  a {
     font-size: 15px;
+
   }
 
   img {
@@ -161,6 +225,10 @@ body {
     height: 80px;
     border-radius: 10%;
     box-shadow: 0 0 8px gray;
+  }
+
+  .users-list-card {
+      margin-bottom: 20px;
   }
 }
 
@@ -174,14 +242,49 @@ body {
   a {
     color: #ff2581;
   }
+
+  p {
+    color: #ff2581;
+    font-size: 15px;
+  }
 }
 
 #gmap {
   height: 400px;
-  margin-left:auto;
-  margin-right:auto;
-  text-align:left;
-  width: 80%
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  width: 80%;
+}
+
+#pageTop {
+  position: fixed;
+  bottom: 20px;
+  right: 50px;
+}
+
+#pageTop i {
+  padding-top: 2px;
+  padding-right: 7px;
+}
+
+#pageTop a {
+  display: block;
+  z-index: 999;
+  padding: 8px 0 0 8px;
+  border-radius: 5px;
+  width: 35px;
+  height: 35px;
+  background-color: #808080;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+}
+
+#pageTop a:hover {
+  text-decoration: none;
+  opacity: 0.7;
 }
 
 footer {

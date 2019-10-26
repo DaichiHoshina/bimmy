@@ -53,6 +53,8 @@ gem 'rspec-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'bullet'
+  gem 'factory_bot_rails'
   gem 'pry-byebug'
   gem 'pry-doc'
   gem 'pry-rails'
@@ -75,7 +77,6 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
-  gem 'factory_bot_rails'
   gem 'faker'
 end
 

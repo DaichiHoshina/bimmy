@@ -5,19 +5,24 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=360,initial-scale=1">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!-- googleフォント -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Economica:700 rel="stylesheet">
+
   </head>
 
   <body>
     <nav class="navbar navbar-default navbar-expand-md navbar-fixed-top">
       <div class="nav-container nav">
         <ul class="nav navbar-nav navbar-left">
-          <li><%= link_to "BiMMy",root_path %></li>
+          <li><%= link_to "BiMMy", root_path, id: "logo" %></li>
         </ul>
 
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -31,37 +36,44 @@
 
             <% if current_user %>
               <li>
-                <%= link_to "マイページ",user_path(current_user.id) %>
+                <%= link_to "人気投稿", rankings_path, class:"fas fa-crown font-weight-normal" %>
               </li>
               <li>
-                <%= link_to "投稿する",new_post_path %>
+                <%= link_to "Myいいね", likes_path, class:"fa fa-heart" %>
               </li>
               <li>
-                <%= link_to "いいね一覧",likes_path %>
+                <%= link_to "投稿一覧", posts_path, class:"fa fa-comments" %>
               </li>
               <li>
-                <%= link_to "投稿一覧",posts_path %>
+                <%= link_to "登録者一覧", users_path, class:"fas fa-user" %>
               </li>
               <li>
-                <%= link_to "登録者一覧",users_path %>
+                <%= link_to "投稿する", new_post_path, class:"fas fa-edit" %>
               </li>
               <li>
-                <%= link_to "ログアウト",logout_path ,{method:"post"} %>
+                <%= link_to "ログアウト", logout_path, method:"post",
+                    class:"fas fa-sign-out-alt" %>
+              </li>
+              <li >
+                <div class="current-user-image col-md-12">
+                  <%= image_tag current_user.image.to_s %>
+                  <%= link_to "#{current_user.name}",user_path(current_user.id) %>
+                </div>
               </li>
             <% end %>
 
             <% if !current_user %>
               <li>
-                <%= link_to "投稿一覧",posts_path %>
+                <%= link_to "投稿一覧", posts_path, class:"fa fa-comments" %>
               </li>
               <li>
-                <%= link_to "登録者一覧",users_path %>
+                <%= link_to "登録者一覧", users_path, class:"fas fa-user" %>
               </li>
               <li>
-                <%= link_to "新規登録",new_user_path %>
+                <%= link_to "新規登録",new_user_path, class:"fas fa-user-edit" %>
               </li>
               <li>
-                <%= link_to "ログイン",login_path %>
+                <%= link_to "ログイン",login_path, class:"fas fa-sign-in-alt" %>
               </li>
             <% end %>
 
@@ -81,6 +93,8 @@
         $(".alert").fadeOut(4000);
       });
     </script>
+
+     <p id="pageTop"><a href="#"><i class="fa fa-chevron-up"></i></a></p>
 
   </body>
 

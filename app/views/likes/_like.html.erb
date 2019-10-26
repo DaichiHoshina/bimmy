@@ -1,5 +1,4 @@
 <% if user %>
-  
   <% if !user.like_posts.include?(post) %>
     <div class="like">
       <%= link_to post_like_path(post_id: post.id), method: :post,
