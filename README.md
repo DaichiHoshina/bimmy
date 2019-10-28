@@ -4,7 +4,7 @@ BiMMyは、日本各地の「おいしいもの」を投稿して共有するた
 投稿者のリアルな情報を得られることで、旅先でのグルメ選びに役立ちます。  
 Laravelで作ったものが気に入ったので、railsでも作成しました。  
 
-![b9f6b51f8410c1b4f8cf7d8de2f54451](https://user-images.githubusercontent.com/50498102/64840090-ddd6dc00-d634-11e9-958e-99e79d25769e.jpg)
+![39f780bf3f0893591cafe9dfcc374edf](https://user-images.githubusercontent.com/50498102/67700338-2124b880-f9f1-11e9-9628-badf2e12faf3.jpg)
 
 
 ## サイトURL
