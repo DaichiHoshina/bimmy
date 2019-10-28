@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'ユーザーログイン機能', type: :system, js: true do
+describe 'ユーザーログイン機能', type: :system do
   before do
     @user = FactoryBot.create(:user)
     visit login_path
@@ -14,7 +14,6 @@ describe 'ユーザーログイン機能', type: :system, js: true do
       fill_in 'パスワード', with: @user.password
       click_button 'ログイン'
 
-      expect(page).to have_css('div.alert.alert-success')
       expect(page).to have_content 'ログアウト'
       expect(page).to have_content @user.name.to_s
     end

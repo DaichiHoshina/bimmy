@@ -3,7 +3,7 @@
 require 'capybara/rspec'
 require 'selenium-webdriver'
 
-Selenium::WebDriver::Chrome.driver_path = '/usr/bin/google-chrome'
+Selenium::WebDriver::Chrome.driver_path = '/usr/local/bin/chromedriver'
 
 Capybara.register_driver :headless_chrome do |app|
   opts = {
