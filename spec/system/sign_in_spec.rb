@@ -4,7 +4,7 @@ require 'rails_helper'
 
 describe 'ログインのシステムテスト', type: :system do
   before do
-    visit new_user_session_path
+    visit new_user_path
   end
 
   describe '有効なログインの場合' do
