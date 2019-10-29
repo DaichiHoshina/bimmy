@@ -81,7 +81,7 @@ workflows:
               only: master
       - deploy:
           requires:
-            - checkout_code
+            - test
           filters:
             branches:
               only: master
