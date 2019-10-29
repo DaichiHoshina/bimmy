@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'ユーザーログイン機能', type: :system do
+describe 'ユーザーログイン機能', type: :feature do
   before do
     @user = FactoryBot.create(:user)
     visit login_path
@@ -14,8 +14,27 @@ describe 'ユーザーログイン機能', type: :system do
       fill_in 'パスワード', with: @user.password
       click_button 'ログイン'
 
+      expect(page).to have_css('div.alert.alert-success')
       expect(page).to have_content 'ログアウト'
       expect(page).to have_content @user.name.to_s
+    end
+  end
+
+  context '無効な情報を送信したとき' do
+    it 'メールアドレスが無効' do
+      fill_in 'メールアドレス', with: ''
+      fill_in 'パスワード', with: @user.password
+      click_button 'ログイン'
+
+      expect(page).to have_content 'ログインに失敗しました'
+    end
+
+    it 'パスワードが無効' do
+      fill_in 'メールアドレス', with: @user.email
+      fill_in 'パスワード', with: ''
+      click_button 'ログイン'
+
+      expect(page).to have_content 'ログインに失敗しました'
     end
   end
 end

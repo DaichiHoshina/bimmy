@@ -30,6 +30,3 @@ Metrics/AbcSize:
 
 Metrics/BlockLength:
   Enabled: false
-
-StringLiterals:
-  Enabled: false
