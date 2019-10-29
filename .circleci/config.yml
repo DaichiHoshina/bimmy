@@ -76,7 +76,7 @@ workflows:
       - rspec:
           requires:
             - checkout_code
-            filters:
+          filters:
             branches:
               only: master
       - deploy:
