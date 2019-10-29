@@ -24,7 +24,7 @@ default: &default
 development:
   <<: *default
   database: myapp_development
-  host: db8
+  host: db
   username: postgres
   password:
 
@@ -61,7 +61,7 @@ development:
 test:
   <<: *default
   database: myapp_test
-  host: db8
+  host: db
   username: postgres
   password:
 
