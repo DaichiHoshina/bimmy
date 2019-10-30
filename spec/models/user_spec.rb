@@ -2,10 +2,11 @@
 
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
+RSpec.describe 'ユーザー登録', type: :model do
   let(:post) { FactoryBot.create :post }
-  describe 'バリデーション' do
-    it 'ユーザー名、メールアドレス、パスワードが有効であること' do
+
+  context '有効な情報が入力されたとき' do
+    it 'ユーザー名、メールアドレス、パスワードが入力され、登録出来る' do
       user = User.create(
         name: 'テストユーザー',
         email: 'test@example.com',
@@ -13,23 +14,25 @@ RSpec.describe User, type: :model do
       )
       expect(user).to be_valid
     end
+  end
 
-    it 'ユーザー名がなければ無効であること' do
+  context '無効な情報が入力されたとき' do
+    it 'ユーザー名がないためエラーになる' do
       user = User.new(name: nil)
       expect(user.valid?).to eq(false)
     end
 
-    it 'メールアドレスがなければ無効であること' do
+    it 'メールアドレスがないためエラーになる' do
       user = User.new(email: nil)
       expect(user.valid?).to eq(false)
     end
 
-    it 'パスワードがなければ無効であること' do
+    it 'パスワードがないためエラーになる' do
       user = User.new(password: nil)
       expect(user.valid?).to eq(false)
     end
 
-    it '名前は16文字以上は無効であること' do
+    it '名前が16文字以上なためエラーになる' do
       user = User.create(
         name: 'テストユーザーテストユーザーテストユーザー',
         email: 'test@example.com',
@@ -38,7 +41,7 @@ RSpec.describe User, type: :model do
       expect(user).not_to be_valid
     end
 
-    it 'メールアドレスで.がないと無効であること' do
+    it 'メールアドレスで.がないためエラーになる' do
       user = User.create(
         name: 'テストユーザー',
         email: 'test＠examplecom',
@@ -47,7 +50,7 @@ RSpec.describe User, type: :model do
       expect(user).not_to be_valid
     end
 
-    it 'メールアドレスで@がないと無効であること' do
+    it 'メールアドレスで@がないためエラーになる' do
       user = User.create(
         name: 'テストユーザー',
         email: 'testexample.com',
@@ -56,7 +59,7 @@ RSpec.describe User, type: :model do
       expect(user).not_to be_valid
     end
 
-    it 'パスワードで数字のみは無効であること' do
+    it 'パスワードで数字のみでないためエラーになる' do
       user = User.create(
         name: 'テストユーザー',
         email: 'testexamplecom',
@@ -65,7 +68,7 @@ RSpec.describe User, type: :model do
       expect(user).not_to be_valid
     end
 
-    it 'パスワードで英語のみは無効であること' do
+    it 'パスワードで英語のみであるためエラーになる' do
       user = User.create(
         name: 'テストユーザー',
         email: 'testexamplecom',
@@ -74,7 +77,7 @@ RSpec.describe User, type: :model do
       expect(user).not_to be_valid
     end
 
-    it 'パスワードで7文字以下は無効であること' do
+    it 'パスワードで7文字以下であるためエラーになる' do
       user = User.create(
         name: 'テストユーザー',
         email: 'testexamplecom',
@@ -83,7 +86,7 @@ RSpec.describe User, type: :model do
       expect(user).not_to be_valid
     end
 
-    it 'パスワードで33文字以上は無効であること' do
+    it 'パスワードで33文字以上あるためエラーになる' do
       user = User.create(
         name: 'テストユーザー',
         email: 'testexamplecom',
