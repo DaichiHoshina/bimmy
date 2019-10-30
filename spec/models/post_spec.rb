@@ -12,37 +12,42 @@ describe '投稿機能', type: :model do
       post = build(:post, user_id: @user.id)
       expect(post).to be_valid
     end
+  end
 
-    context '無効な情報が入力されたとき'
+  context '無効な情報が入力されたとき' do
+    it '感想がないためエラーになる' do
+      post = build(:post, description: nil, user_id: @user.id)
+      expect(post.valid?).to eq(false)
+    end
 
-    it 'imageが無くても正常に登録できる' do
+    it '画像がないためエラーになる' do
       post = build(:post, image: nil, user_id: @user.id)
-      expect(post).to be_valid
+      expect(post.valid?).to eq(false)
     end
 
-    it 'contentsが999文字で登録できる' do
-      post = build(:post, contents: ('a' * 999).to_s, user_id: @user.id)
-      expect(post).to be_valid
-    end
-
-    it 'contentsが1000文字で登録できる' do
-      post = build(:post, contents: ('a' * 1000).to_s, user_id: @user.id)
-      expect(post).to be_valid
-    end
-
-    it 'titleが無くても正常に登録できる' do
+    it '品名がないためエラーになる' do
       post = build(:post, title: nil, user_id: @user.id)
-      expect(post).to be_valid
+      expect(post.valid?).to eq(false)
     end
 
-    it 'titleが49文字で登録できる' do
-      post = build(:post, title: ('a' * 49).to_s, user_id: @user.id)
-      expect(post).to be_valid
+    it '評価がないためエラーになる' do
+      post = build(:post, rate: nil, user_id: @user.id)
+      expect(post.valid?).to eq(false)
     end
 
-    it 'titleが50文字で登録できる' do
-      post = build(:post, title: ('a' * 50).to_s, user_id: @user.id)
-      expect(post).to be_valid
+    it '品名が21文字以上でエラーになる' do
+      post = build(:post, title: ('a' * 21), user_id: @user.id)
+      expect(post.valid?).to eq(false)
+    end
+
+    it '感想が201文字以上でエラーになる' do
+      post = build(:post, description: ('a' * 201), user_id: @user.id)
+      expect(post.valid?).to eq(false)
+    end
+
+    it '店名が21文字以上でエラーになる' do
+      post = build(:post, store: ('a' * 21), user_id: @user.id)
+      expect(post.valid?).to eq(false)
     end
   end
 end

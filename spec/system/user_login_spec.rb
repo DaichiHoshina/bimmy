@@ -7,7 +7,7 @@ describe 'ユーザーログイン機能', type: :feature do
   before { visit login_path }
 
   context '有効な情報を送信したとき' do
-    it 'ログアウトが表示されること' do
+    it 'ログアウトが表示される' do
       fill_in 'メールアドレス', with: user.email
       fill_in 'パスワード', with: user.password
       click_button 'ログイン'

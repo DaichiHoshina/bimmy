@@ -17,7 +17,7 @@ describe '投稿画面のシステムテスト', type: :system do
     context '自身の参加イベントの出店情報の場合' do
       let(:login_user) { user1 }
       context '有効な入力をしたイベントの場合' do
-        it '登録成功のメッセージが表示されること' do
+        it '登録成功のメッセージが表示される' do
           fill_in '店名', with: 'さとう食堂'
           fill_in '品名', with: 'エビフライ定食'
           fill_in '感想', with: 'とても美味しいエビでした。また行きたいです。'
