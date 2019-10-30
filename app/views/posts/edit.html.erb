@@ -6,27 +6,27 @@
         <%= form_for @post do |f| %>
         <%= render 'layouts/error_messages', model: f.object %>
         <div class="form-group">
-          <%= f.label :"店名(30文字以内)" %>
+          <%= f.label :store, "店名(30文字以内)" %>
           <%= f.text_field:store, class: "form-control" %>
         </div>
         <div class="form-group">
-          <%= f.label :"品名 ※必須(30文字以内)" %>
+          <%= f.label :title, "品名 ※必須(30文字以内)" %>
           <%= f.text_field:title, class: "form-control" %>
         </div>
         <div class="form-group">
-          <%= f.label :"感想 ※必須(200文字以内)" %>
+          <%= f.label :description, "感想 ※必須(200文字以内)" %>
           <%= f.text_area :description, class:"form-control", rows:"4" %>
         </div>
         <div class="form-group">
-        <%= f.label :"住所(県名) ※必須" %>
-        <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name %>
+          <%= f.label :prefecture_id,"住所(県名) ※必須" %>
+          <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name %>
         </div>
         <div class="form-group">
-        <%= f.label :"住所(市町村以下)" %>
-        <%= f.text_field:city, class: "form-control" %>
+          <%= f.label :"住所(市町村以下)" %>
+          <%= f.text_field:city, class: "form-control" %>
         </div>
         <div class="form-group">
-          <%= f.label :"画像 ※必須" %>
+          <%= f.label :image, "画像 ※必須" %>
           <%= f.file_field :image %>
         </div>
 
