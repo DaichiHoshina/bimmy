@@ -5,7 +5,6 @@ class Post < ApplicationRecord
   validates :title, presence: true, length: { maximum: 20 }
   validates :image, presence: true
   validates :store, length: { maximum: 20 }
-  validates :rate, presence: true
 
   belongs_to :user
   has_many :likes, dependent: :destroy

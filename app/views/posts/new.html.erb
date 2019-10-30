@@ -18,7 +18,7 @@
             <%= f.text_area :description, class:"form-control", rows:"4" %>
           </div>
           <div class="form-group">
-            <%= f.label :"住所(県名) ※必須" %>
+            <%= f.label :prefecture_id,"住所(県名) ※必須" %>
             <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name %>
           </div>
           <div class="form-group">
@@ -26,14 +26,14 @@
             <%= f.text_field:city, class: "form-control" %>
           </div>
           <div class="form-group">
-            <%= f.label :"画像 ※必須" %>
+            <%= f.label :image, "画像 ※必須" %>
             <%= f.file_field :image %>
           </div>
 
           <!-- 星評価表示 -->
           <div class="form-group row new-post-star" id="star">
-            <%= f.label :"評価 ※必須", class:'col-md-4 col-form-label' %>
-            <%= f.hidden_field :rate, id: :review_star %>
+            <%= f.label :rate, "評価 ※必須", class:'col-md-4 col-form-label' %>
+            <%= f.hidden_field :rate, name:"review_star", id: :review_star %>
           </div>
 
           <!-- 星評価javascript -->
