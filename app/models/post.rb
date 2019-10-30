@@ -2,9 +2,9 @@
 
 class Post < ApplicationRecord
   validates :description, presence: true, length: { maximum: 200 }
-  validates :title, presence: true, length: { maximum: 30 }
+  validates :title, presence: true, length: { maximum: 20 }
   validates :image, presence: true
-  validates :store, length: { maximum: 30 }
+  validates :store, length: { maximum: 20 }
   validates :rate, presence: true
 
   belongs_to :user

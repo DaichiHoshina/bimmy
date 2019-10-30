@@ -3,7 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  describe 'validation' do
+  let(:post) { FactoryBot.create :post }
+  describe 'バリデーション' do
     it 'ユーザー名、メールアドレス、パスワードが有効であること' do
       user = User.create(
         name: 'テストユーザー',
