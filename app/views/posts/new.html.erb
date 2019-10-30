@@ -18,12 +18,12 @@
             <%= f.text_area :description, class:"form-control", rows:"4" %>
           </div>
           <div class="form-group">
-          <%= f.label :"住所(県名) ※必須" %>
-          <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name %>
+            <%= f.label :"住所(県名) ※必須" %>
+            <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name %>
           </div>
           <div class="form-group">
-          <%= f.label :"住所(市町村以下)" %>
-          <%= f.text_field:city, class: "form-control" %>
+            <%= f.label :"住所(市町村以下)" %>
+            <%= f.text_field:city, class: "form-control" %>
           </div>
           <div class="form-group">
             <%= f.label :"画像 ※必須" %>
