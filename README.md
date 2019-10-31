@@ -51,5 +51,4 @@ https://mysterious-sands-64106.herokuapp.com
     - Rspec
 
 ## 今後の課題
-・herokuからAWSを使ったデプロイに切り替える。  
-・テストの数が少ないので充実させていく。  
+・herokuからAWSを使ったデプロイに切り替える。 
