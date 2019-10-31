@@ -37,6 +37,8 @@ gem 'jp_prefecture'
 gem 'jquery-rails'
 gem 'kaminari'
 gem 'kaminari-bootstrap', '~> 3.0.1'
+gem 'omniauth'
+gem 'omniauth-twitter'
 gem 'rmagick'
 
 # Use ActiveStorage variant

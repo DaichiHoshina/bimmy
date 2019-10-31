@@ -6,13 +6,14 @@ Rails.application.routes.draw do
   resources :users, only: %i[index new create show edit update]
   resources :posts, only: %i[index new create edit update destroy] do
     resource :like, only: %i[create destroy]
-    resource :map, only: %i[create show update]
+    resource :map,  only: %i[create show update]
   end
-  resources :likes, only: %i[index]
-  resources :maps, only: %i[index new create show update]
+  resources :likes,    only: %i[index]
+  resources :maps,     only: %i[index new create show update]
   resources :rankings, only: %i[index]
 
-  get '/login', to: 'sessions#new'
-  post '/login', to: 'sessions#create'
-  post '/logout', to: 'sessions#destroy'
+  get  '/login',         to: 'sessions#new'
+  get  '/twitter_login', to: 'sessions#twitter'
+  post '/login',         to: 'sessions#create'
+  post '/logout',        to: 'sessions#destroy'
 end
