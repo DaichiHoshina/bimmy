@@ -26,11 +26,6 @@ describe '投稿機能', type: :model do
       expect(post.valid?).to eq(false)
     end
 
-    it '評価がないためエラーになる' do
-      post = build(:post, rate: nil)
-      expect(post.valid?).to eq(false)
-    end
-
     it '品名が21文字以上でエラーになる' do
       post = build(:post, title: ('a' * 21))
       expect(post.valid?).to eq(false)
