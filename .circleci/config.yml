@@ -80,8 +80,6 @@ workflows:
             branches:
               only: master
       - deploy:
-          requires:
-            - rspec
           filters:
             branches:
               only: master

@@ -19,11 +19,11 @@
           <%= form_for :session, url: login_path do |f| %>
             <%= f.hidden_field :email, {value: 'test@test.jp'} %>
             <%= f.hidden_field :password, {value: 'test1234'} %>
-            <%= f.submit "テストユーザーとしてログイン", class: "btn btn-warning" %>
+            <%= f.submit "テストユーザーとしてログイン", class: "btn btn-info" %>
           <% end %>
         </div>
       <% end %>
-      
+
     </div>
   </div>
 </div>

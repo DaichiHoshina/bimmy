@@ -35,6 +35,11 @@ body {
   color: #000000;
   height: 100vh;
   width: 100vw;
+  .btn  {
+      a{
+          font-size: 15px;
+      }
+  }
 }
 
 .current-user-image {
@@ -67,11 +72,16 @@ body {
 
     .top-logo p {
       font-size: 20px;
+      letter-spacing: -0.1em;
+      opacity: 0.9;
+
+
     }
 
     .top-login {
       .btn {
-        font-size: 20px;
+        font-size: 15px;
+        border-radius: 3%;
       }
     }
   }
