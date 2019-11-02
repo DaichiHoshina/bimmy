@@ -35,17 +35,18 @@ body {
   color: #000000;
   height: 100vh;
   width: 100vw;
-  .btn  {
-      a{
-          font-size: 15px;
-      }
+
+  .btn {
+    a {
+      font-size: 15px;
+    }
   }
 }
 
 .icon {
-    img {
-        height:30%;
-    }
+  img {
+    height: 30%;
+  }
 }
 
 .current-user-image {
@@ -80,15 +81,20 @@ body {
       font-size: 20px;
       letter-spacing: -0.1em;
       opacity: 0.9;
-
-
     }
 
     .top-login {
+        .btn-danger {
+            margin-right: 10px;
+        }
       .btn {
         font-size: 15px;
         border-radius: 3%;
       }
+    }
+
+    .twitter-login {
+      margin-top: 15px;
     }
   }
 }
