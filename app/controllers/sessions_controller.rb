@@ -5,7 +5,9 @@ class SessionsController < ApplicationController
 
   def twitter
     user = User.find_or_create_from_auth(request.env['omniauth.auth'])
-    session[:user_id] = user.id
+    current_user = user
+    log_in user
+    binding.pry
     redirect_to root_path, success: 'ログインに成功しました'
   end
 
@@ -28,12 +30,14 @@ class SessionsController < ApplicationController
   private
 
   def log_in(user)
-    session[:user_id] = user.id
+    remember_token = User.new_remember_token
+    cookies.permanent[:user_remember_token] = remember_token
+    user.update!(remember_token: User.encrypt(remember_token))
+    @current_user = user
   end
 
   def log_out
-    session.delete(:user_id)
-    @current_user = nil
+    cookies.delete(:user_remember_token)
   end
 
   def session_params

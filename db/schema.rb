@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2019_10_31_055429) do
     t.string "uid"
     t.string "user_name"
     t.string "image_url"
+    t.string "remember_token"
   end
 
 end

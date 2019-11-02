@@ -8,7 +8,8 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :logged_in?
 
   def current_user
-    @current_user ||= User.find_by(id: session[:user_id])
+    remember_token = User.encrypt(cookies[:user_remember_token])
+    @current_user ||= User.find_by(remember_token: remember_token)
   end
 
   def logged_in?
@@ -21,5 +22,13 @@ class ApplicationController < ActionController::Base
 
   def ensure_correct_user
     redirect_to login_path, danger: '権限がありません' if params[:id].to_i != current_user.id
+  end
+
+  private
+
+  def authenticate
+    return if logged_in?
+
+    redirect_to root_path, alert: 'ログインしてください'
   end
 end

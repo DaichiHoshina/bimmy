@@ -30,6 +30,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'active_hash'
 gem 'bcrypt'
 gem 'carrierwave'
+gem 'devise'
+gem 'dotenv-rails'
 gem 'fog-aws'
 gem 'geocoder'
 gem 'gmaps4rails'
@@ -50,7 +52,6 @@ gem 'rmagick'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap-sass'
-gem 'dotenv-rails'
 gem 'rspec-rails'
 
 group :development, :test do

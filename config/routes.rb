@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   resources :maps,     only: %i[index new create show update]
   resources :rankings, only: %i[index]
 
-  get  '/login',         to: 'sessions#new'
-  get  '/twitter_login', to: 'sessions#twitter'
+  get  '/login', to: 'sessions#new'
+  get  '/auth/:provider/callback', to: 'sessions#twitter'
   post '/login',         to: 'sessions#create'
   post '/logout',        to: 'sessions#destroy'
 end
