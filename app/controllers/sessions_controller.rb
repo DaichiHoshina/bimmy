@@ -5,9 +5,8 @@ class SessionsController < ApplicationController
 
   def twitter
     user = User.find_or_create_from_auth(request.env['omniauth.auth'])
-    current_user = user
+    @current_user = user
     log_in user
-    binding.pry
     redirect_to root_path, success: 'ログインに成功しました'
   end
 

@@ -21,6 +21,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :like_posts, through: :likes, source: 'post'
 
+  # ツイッター認証機能
   def self.find_or_create_from_auth(auth)
     provider = auth[:provider]
     uid = auth[:uid]
@@ -29,7 +30,6 @@ class User < ApplicationRecord
 
     find_or_create_by(provider: provider, uid: uid) do |user|
       user.name = name
-      user.id = uid.to_i
       user.image_url = image
     end
   end
