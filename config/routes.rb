@@ -3,17 +3,18 @@
 Rails.application.routes.draw do
   root 'home#top'
 
-  resources :users, only: %i[index new create show edit update]
+  resources :users, only: %i[index new create show edit update destroy]
   resources :posts, only: %i[index new create edit update destroy] do
     resource :like, only: %i[create destroy]
     resource :map,  only: %i[create show update]
   end
+
   resources :likes,    only: %i[index]
   resources :maps,     only: %i[index new create show update]
   resources :rankings, only: %i[index]
 
-  get  '/login', to: 'sessions#new'
+  get  '/login',                   to: 'sessions#new'
   get  '/auth/:provider/callback', to: 'sessions#twitter'
-  post '/login',         to: 'sessions#create'
-  post '/logout',        to: 'sessions#destroy'
+  post '/login',                   to: 'sessions#create'
+  post '/logout',                  to: 'sessions#destroy'
 end

@@ -24,15 +24,9 @@
         </div>
         <div class="top-login col-md-offset-4 col-md-4 text-center">
           <%= link_to " Twitterアカウントでログイン", '/auth/twitter', class: "btn fab fa-twitter btn-primary" %>
-          <div>
-            <%= session[:user_name] %>
-            <%= session[:user_id] %>
-            <%= link_to "ログアウト", logout_path, method:"post",
-                class:"fas fa-sign-out-alt" %>
-          </div>
         </div>
       <% end %>
-
+      
     </div>
   </div>
 </div>

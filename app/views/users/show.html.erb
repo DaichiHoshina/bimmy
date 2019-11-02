@@ -19,7 +19,6 @@
   </div>
 </div>
 
-
 <div class="wrapper">
   <div class="col-md-offset-4 col-md-4">
     <h2>[<%= @user.name %>さんの投稿]</h2>
@@ -63,7 +62,7 @@
             $('#star-rate-<%= post.id %>').raty({
               size: 36,
               starOff:  '<%= asset_path('star-off.png') %>',
-              starOn : '<%= asset_path('star-on.png') %>',
+              starOn :  '<%= asset_path('star-on.png') %>',
               starHalf: '<%= asset_path('star-half.png') %>',
               half: true,
               readOnly: true,
@@ -105,13 +104,13 @@
     <div class="paginate text-center">
       <%= paginate @user_posts %>
     </div>
-    <div class="text-right">
-      <% if current_user.id == post.user_id %>
-      <%= link_to "削除", post_path(post.id) ,method: :delete,
-      data: {confirm: '本当に削除してもよろしいですか？'} %>
-      <%= link_to "編集", edit_post_path(post.id),
-      data: {confirm: '本当に編集してもよろしいですか？'} %>
-      <% end %>
-    </div>
   </div>
+</div>
+
+<!-- 管理人のみ削除可能 -->
+<div class="text-center">
+  <% if current_user.id == 1 %>
+  <p>※テスト用コマンドです</p>
+  <%= link_to "ユーザーを削除", user_path(@user.id) ,method: :delete,data: {confirm: '本当に削除しても よろしいですか？'} %>
+  <% end %>
 </div>
