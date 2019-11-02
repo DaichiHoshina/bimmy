@@ -11,7 +11,7 @@
       <% if !current_user %>
         <div class="top-login col-md-offset-4 col-md-4 text-center">
           <p class="top-btn">
-            <%= link_to "ログイン",login_path, class: "btn btn-primary" %>
+            <%= link_to "ログイン",login_path, class: "btn btn-danger" %>
             <%= link_to "新規登録",new_user_path, class: "btn btn-success" %>
           </p>
         </div>
@@ -21,6 +21,9 @@
             <%= f.hidden_field :password, {value: 'test1234'} %>
             <%= f.submit "テストユーザーとしてログイン", class: "btn btn-info" %>
           <% end %>
+        </div>
+        <div class="top-login col-md-offset-4 col-md-4 text-center twitter-login">
+          <%= link_to " Twitterアカウントでログイン", '/auth/twitter', class: "btn fab fa-twitter btn-primary" %>
         </div>
       <% end %>
 

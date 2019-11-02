@@ -56,7 +56,11 @@
               </li>
               <li >
                 <div class="current-user-image col-md-12">
-                  <%= image_tag current_user.image.to_s %>
+                  <% if current_user.uid != nil %>
+                    <img src ="<%= current_user[:image_url]%>" >
+                  <% else %>
+                    <%= image_tag current_user.image.to_s %>
+                  <% end %>
                   <%= link_to "#{current_user.name}",user_path(current_user.id) %>
                 </div>
               </li>

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,61 +10,54 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_191_024_093_941) do
+ActiveRecord::Schema.define(version: 2019_10_31_055429) do
+
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+  enable_extension "plpgsql"
 
-  create_table 'addresses', force: :cascade do |t|
-    t.integer 'prefecture_id'
-    t.string 'city'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'favorites', force: :cascade do |t|
-    t.integer 'user_id'
-    t.integer 'post_id'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "maps", force: :cascade do |t|
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
+    t.integer "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'likes', force: :cascade do |t|
-    t.integer 'user_id'
-    t.integer 'post_id'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.string "image"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "city"
+    t.integer "prefecture_id"
+    t.float "rate"
+    t.string "store"
   end
 
-  create_table 'maps', force: :cascade do |t|
-    t.string 'address'
-    t.float 'latitude'
-    t.float 'longitude'
-    t.integer 'post_id'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password"
+    t.string "password_digest"
+    t.string "image"
+    t.string "introduction"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "provider"
+    t.string "uid"
+    t.string "user_name"
+    t.string "image_url"
+    t.string "remember_token"
   end
 
-  create_table 'posts', force: :cascade do |t|
-    t.string 'title'
-    t.string 'description'
-    t.string 'image'
-    t.integer 'user_id'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.string 'city'
-    t.integer 'prefecture_id'
-    t.float 'rate'
-    t.string 'store'
-  end
-
-  create_table 'users', force: :cascade do |t|
-    t.string 'name'
-    t.string 'email'
-    t.string 'password'
-    t.string 'password_digest'
-    t.string 'image'
-    t.string 'introduction'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-  end
 end

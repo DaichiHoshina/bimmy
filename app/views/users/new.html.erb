@@ -20,8 +20,15 @@
             <%= f.label :password, "パスワード ※必須  8~32文字で英数字" %>
             <%= f.password_field :password, class: "form-control" %>
           </div>
-          <%= f.submit "登録",class: "btn btn-block btn-primary" %>
+          <%= f.submit "登録",class: "btn btn-block btn-success" %>
         <% end %>
+
+        <div class="text-center"><h4>or</h4></div>
+
+        <div class="top-login text-center twitter-login">
+          <%= link_to " Twitterアカウントでログイン", '/auth/twitter', class: "btn fab fa-twitter btn-primary" %>
+        </div>
+
       </div>
     </div>
   </div>

@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      session[:user_id] = @user.id
+      log_in @user
       redirect_to root_path, success: '登録が完了しました'
     else
       flash.now[:danger] = '登録に失敗しました'
@@ -45,10 +45,35 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find_by(id: params[:id])
+    @post = Post.where(user_id: params[:id])
+
+    # 管理人のみが削除可能
+    if current_user.id == 1
+      if @user.destroy
+        @post.delete_all
+        redirect_to root_path, success: 'ユーザーを削除しました'
+      else
+        flash.now[:danger] = 'ユーザーの削除に失敗しました'
+        render :edit
+      end
+    else
+      redirect_to user_path(current_user.id), danger: 'あなたに権限はありません'
+    end
+  end
+
   private
 
   def user_params
     params.require(:user).permit(:name, :email, :password,
                                  :password_confirmation, :image, :introduction)
+  end
+
+  def log_in(user)
+    remember_token = User.new_remember_token
+    cookies.permanent[:user_remember_token] = remember_token
+    user.update!(remember_token: User.encrypt(remember_token))
+    @current_user = user
   end
 end

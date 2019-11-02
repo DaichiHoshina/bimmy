@@ -5,7 +5,11 @@
       <% @users.each do |user| %>
           <div class="users-list-card col-md-4">
             <div class="user-image">
-              <%= image_tag user.image.to_s %>
+              <% if user.uid != nil %>
+                <img src ="<%= user[:image_url] %>" >
+              <% else %>
+                <%= image_tag user.image.to_s %>
+              <% end %>
             </div>
             <p><%= link_to "#{user.name}",user_path(user.id) %></p>
           </div>

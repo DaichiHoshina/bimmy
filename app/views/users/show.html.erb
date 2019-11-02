@@ -5,7 +5,11 @@
         <h2><%= @user.name %></h2>
         <div class="introduction"><%= simple_format(@user.introduction) %></div>
         <div class="user-image">
-          <%= image_tag @user.image.to_s %>
+          <% if @user.uid != nil %>
+            <img src ="<%= @user[:image_url] %>" >
+          <% else %>
+            <%= image_tag @user.image.to_s %>
+          <% end %>
         </div>
         <% if current_user.id == @user.id %>
           <%= link_to "プロフィール編集", edit_user_path %>
@@ -14,7 +18,6 @@
     </div>
   </div>
 </div>
-
 
 <div class="wrapper">
   <div class="col-md-offset-4 col-md-4">
@@ -26,7 +29,11 @@
         <div class="col-md-offset-4 col-md-4 post-list-container text-left mt-4">
           <div class="post-list-card">
             <div class="post-user-image">
-              <%= image_tag post.user.image.to_s %>
+              <% if post.user.uid != nil %>
+                <img src ="<%= post.user[:image_url] %>" >
+              <% else %>
+                <%= image_tag post.user.image.to_s %>
+              <% end %>
             </div>
             <div class="post-user-name">
               <p><%= link_to "@"+"#{post.user.name}",user_path(post.user.id) %></p>
@@ -55,7 +62,7 @@
             $('#star-rate-<%= post.id %>').raty({
               size: 36,
               starOff:  '<%= asset_path('star-off.png') %>',
-              starOn : '<%= asset_path('star-on.png') %>',
+              starOn :  '<%= asset_path('star-on.png') %>',
               starHalf: '<%= asset_path('star-half.png') %>',
               half: true,
               readOnly: true,
@@ -98,4 +105,12 @@
       <%= paginate @user_posts %>
     </div>
   </div>
+</div>
+
+<!-- 管理人のみ削除可能 -->
+<div class="text-center">
+  <% if current_user.id == 1 %>
+  <p>※テスト用コマンドです</p>
+  <%= link_to "ユーザーを削除", user_path(@user.id) ,method: :delete,data: {confirm: '本当に削除しても よろしいですか？'} %>
+  <% end %>
 </div>

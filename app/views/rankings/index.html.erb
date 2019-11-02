@@ -6,7 +6,11 @@
         <div class="col-md-offset-4 col-md-4 post-list-container text-left mt-4">
           <div class="post-list-card">
             <div class="post-user-image">
-              <%= image_tag post.user.image.to_s %>
+              <% if post.user.uid != nil %>
+                <img src ="<%= post.user[:image_url] %>" >
+              <% else %>
+                <%= image_tag post.user.image.to_s %>
+              <% end %>
             </div>
             <div class="post-user-name">
               <p><%= link_to "@"+"#{post.user.name}",user_path(post.user.id) %></p>
