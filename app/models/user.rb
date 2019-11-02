@@ -27,10 +27,12 @@ class User < ApplicationRecord
     uid = auth[:uid]
     name = auth[:info][:name]
     image = auth[:info][:image]
+    introduction = auth[:info][:description]
 
     find_or_create_by(provider: provider, uid: uid) do |user|
       user.name = name
       user.image_url = image
+      user.introduction = introduction
     end
   end
 

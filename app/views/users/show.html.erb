@@ -5,7 +5,11 @@
         <h2><%= @user.name %></h2>
         <div class="introduction"><%= simple_format(@user.introduction) %></div>
         <div class="user-image">
-          <%= image_tag @user.image.to_s %>
+          <% if @user.uid != nil %>
+            <img src ="<%= @user[:image_url] %>" >
+          <% else %>
+            <%= image_tag @user.image.to_s %>
+          <% end %>
         </div>
         <% if current_user.id == @user.id %>
           <%= link_to "プロフィール編集", edit_user_path %>
@@ -26,7 +30,11 @@
         <div class="col-md-offset-4 col-md-4 post-list-container text-left mt-4">
           <div class="post-list-card">
             <div class="post-user-image">
-              <%= image_tag post.user.image.to_s %>
+              <% if post.user.uid != nil %>
+                <img src ="<%= post.user[:image_url] %>" >
+              <% else %>
+                <%= image_tag post.user.image.to_s %>
+              <% end %>
             </div>
             <div class="post-user-name">
               <p><%= link_to "@"+"#{post.user.name}",user_path(post.user.id) %></p>
@@ -96,6 +104,14 @@
     </div>
     <div class="paginate text-center">
       <%= paginate @user_posts %>
+    </div>
+    <div class="text-right">
+      <% if current_user.id == post.user_id %>
+      <%= link_to "削除", post_path(post.id) ,method: :delete,
+      data: {confirm: '本当に削除してもよろしいですか？'} %>
+      <%= link_to "編集", edit_post_path(post.id),
+      data: {confirm: '本当に編集してもよろしいですか？'} %>
+      <% end %>
     </div>
   </div>
 </div>
