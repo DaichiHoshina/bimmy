@@ -84,9 +84,14 @@ body {
     }
 
     .top-login {
-        .btn-danger {
-            margin-right: 10px;
-        }
+      .btn-danger {
+        margin-right: 10px;
+        margin-bottom: 5px;
+      }
+      .btn-success {
+        margin-bottom: 5px;
+      }
+
       .btn {
         font-size: 15px;
         border-radius: 3%;
