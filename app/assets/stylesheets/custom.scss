@@ -289,34 +289,30 @@ body {
   width: 80%;
 }
 
-#pageTop {
-  position: fixed;
-  bottom: 20px;
-  right: 50px;
+.pagetop {
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+}
+.pagetop a {
+    display: block;
+    background-color: #ccc;
+    text-align: center;
+    color: #222;
+    font-size: 12px;
+    text-decoration: none;
+    padding: 20px 10px;
 }
 
-#pageTop i {
-  padding-top: 2px;
-  padding-right: 7px;
-}
-
-#pageTop a {
-  display: block;
-  z-index: 999;
-  padding: 8px 0 0 8px;
-  border-radius: 5px;
-  width: 35px;
-  height: 35px;
-  background-color: #808080;
-  color: #fff;
-  font-weight: bold;
-  text-decoration: none;
-  text-align: center;
-}
-
-#pageTop a:hover {
-  text-decoration: none;
-  opacity: 0.7;
+.pagetop a:hover {
+    display: block;
+    background-color: #222;
+    text-align: center;
+    color: #fff;
+    font-size: 12px;
+    text-decoration: none;
+    padding:20px 10px;
 }
 
 footer {

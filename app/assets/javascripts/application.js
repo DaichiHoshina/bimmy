@@ -17,8 +17,23 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
-//■page topボタン
+$(document).ready(function() {
+    var pagetop = $('.pagetop');
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 100) {
+            pagetop.fadeIn();
+        } else {
+            pagetop.fadeOut();
+        }
+    });
+    pagetop.click(function () {
+        $('body, html').animate({ scrollTop: 0 }, 500);
+        return false;
+    });
+});
 
+
+//■page topボタン
 $(function(){
 var topBtn=$('#pageTop');
 topBtn.hide();
