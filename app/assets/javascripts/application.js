@@ -16,6 +16,7 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
+//ページトップ機能
 $(document).ready(function() {
     var pagetop = $('.pagetop');
     $(window).scroll(function () {
@@ -32,7 +33,7 @@ $(document).ready(function() {
 });
 
 
-
+//星評価機能
 (function($) {
   'use strict';
 
