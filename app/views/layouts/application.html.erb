@@ -25,6 +25,20 @@
           <li><%= link_to "BiMMy", root_path, id: "logo" %></li>
         </ul>
 
+        <script>
+              $("#logo").hover(
+          function(){
+            $(this).animate({
+              'font-size':'2.1em'
+            }, 400);
+          },
+          function(){
+           $(this).animate({
+              'font-size':'2em'
+            }, 400);
+           });
+        </script>
+
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
