@@ -3,8 +3,8 @@
     <div class="row">
       <div class="card-body col-md-offset-2 col-md-8 text-center">
         <div class="top-logo">
-          <p>全国の「おいしいもの」を投稿するサイトです</p>
-          <p>みんなで「BiMMy(美味ぃ)」を共有しましょう</p>
+          <p class="logo">全国の「おいしいもの」を投稿するサイトです<br>
+          みんなで「BiMMy(美味ぃ)」を共有しましょう</p>
         </div>
       </div>
 
@@ -26,6 +26,20 @@
           <%= link_to " Twitterアカウントでログイン", '/auth/twitter', class: "btn fab fa-twitter btn-primary" %>
         </div>
       <% end %>
+
+      <script>
+            $('.btn').hover(
+        function(){
+          $(this).animate({
+            'font-size':'18px'
+          }, 400);
+        },
+        function(){
+         $(this).animate({
+            'font-size':'15px'
+          }, 400);
+         });
+      </script>
 
     </div>
   </div>
