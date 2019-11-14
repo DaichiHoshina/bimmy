@@ -16,11 +16,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     rm -rf /var/lib/apt/lists/*
 
 RUN mkdir /myapp
-
 WORKDIR /myapp
-ADD Gemfile /myapp/Gemfile
-ADD Gemfile.lock /myapp/Gemfile.lock
-RUN bundle install
 COPY . /myapp
+
+COPY Gemfile Gemfile
+COPY Gemfile.lock Gemfile.lock
+RUN bundle install
 
 CMD ["rails", "server", "-b", "0.0.0.0"]
