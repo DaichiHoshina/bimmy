@@ -109,8 +109,8 @@
 
 <!-- 管理人のみ削除可能 -->
 <div class="text-center">
-  <% if current_user.id == 1 %>
-  <p>※テスト用コマンドです</p>
+  <% if current_user.id == 4 %>
+  <p>※管理人コマンド</p>
   <%= link_to "ユーザーを削除", user_path(@user.id) ,method: :delete,data: {confirm: '本当に削除しても よろしいですか？'} %>
   <% end %>
 </div>
