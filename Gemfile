@@ -44,7 +44,6 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'rails-i18n'
 gem 'rmagick'
-gem 'simple_form'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
