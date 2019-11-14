@@ -51,7 +51,7 @@ jobs:
               docker build --rm=false -t registry.heroku.com/${HEROKU_APP_NAME}/web .
       - run:
           name: setup heroku command
-          command: bash ../bin/setup_heroku.sh
+          command: bash ../setup_heroku.sh
       - run:
           name: heroku maintenance on
           command: heroku maintenance:on --app ${HEROKU_APP_NAME}
@@ -61,7 +61,7 @@ jobs:
           command: |
             docker login --username=_ --password=$HEROKU_AUTH_TOKEN registry.heroku.com
             docker push registry.heroku.com/${HEROKU_APP_NAME}/web
-            bash ../bin/heroku-container-release.sh
+            bash ../heroku-container-release.sh
       - run:
           name: heroku db migrate
           command: heroku run rails db:migrate --app ${HEROKU_APP_NAME}
