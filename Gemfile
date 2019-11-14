@@ -42,6 +42,7 @@ gem 'kaminari'
 gem 'kaminari-bootstrap', '~> 3.0.1'
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'rails-i18n'
 gem 'rmagick'
 
 # Use ActiveStorage variant

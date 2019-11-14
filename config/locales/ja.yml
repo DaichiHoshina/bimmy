@@ -40,6 +40,19 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+    models:
+      post: 投稿
+    attributes:
+      post:
+        id: ID
+        created_at: 登録日時
+        updated_at: 更新日時
+        description: 感想
+        store: 店名
+        title: 品名
+        prefecture_id: 県名
+        city: 市町村
+        image: 画像
   date:
     abbr_day_names:
     - 日
