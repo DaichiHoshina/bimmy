@@ -30,12 +30,12 @@
           function(){
             $(this).animate({
               'font-size':'2.1em'
-            }, 400);
+            }, 300);
           },
           function(){
            $(this).animate({
               'font-size':'2em'
-            }, 400);
+            }, 300);
            });
         </script>
 
@@ -97,20 +97,23 @@
 
           </ul>
         </div>
-
       </div>
+      
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>" role="alert"><%= value %></div>
+      <% end %>
+      <script>
+        $(function () {
+          $(".alert").fadeOut(4000);
+        });
+      </script>
+
     </nav>
-    <% flash.each do |key, value| %>
-      <div class="alert alert-<%= key %>" role="alert"><%= value %></div>
-    <% end %>
+
 
     <%= yield %>
 
-    <script>
-      $(function () {
-        $(".alert").fadeOut(4000);
-      });
-    </script>
+
 
     <p class="pagetop"><a href="#wrap">PAGE<br>TOP</a></p>
 
