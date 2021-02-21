@@ -6,6 +6,7 @@
           <p class="logo">全国の「おいしいもの」を投稿するサイトです<br>
           みんなで「BiMMy(美味ぃ)」を共有しましょう</p>
         </div>
+        <%= react_component("my_subdirectory/HelloWorld", { greeting: "Hello from react-rails." }) %>
       </div>
 
       <% if !current_user %>

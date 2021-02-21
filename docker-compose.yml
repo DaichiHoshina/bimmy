@@ -1,9 +1,9 @@
-version: '3'
+version: "3"
 services:
   db:
     image: postgres:11.2
     ports:
-      - '5432:5432'
+      - "3306:3306"
     volumes:
       - postgresql-data:/var/lib/postgresql/data
     environment:
