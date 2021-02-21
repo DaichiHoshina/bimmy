@@ -120,7 +120,7 @@ GEM
       dotenv (= 2.7.5)
       railties (>= 3.2, < 6.1)
     erubi (1.10.0)
-    excon (0.67.0)
+    excon (0.79.0)
     execjs (2.7.0)
     factory_bot (5.1.1)
       activesupport (>= 4.2.0)
